@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-adsense-account" content="ca-pub-7594412359714045">
+    <title>Online PGP - Easily Generete PGP Keys, Encryption/Decryption, Sign/Verify PGP Message</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;700&display=swap">
+    <link rel="icon" href="/static/favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="asset/styles.css">
+    <script src="asset/openpgp.min.js" defer></script>
+    <script src="asset/script.js" defer></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-697PK9P2V4"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-697PK9P2V4');
+    </script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7594412359714045" crossorigin="anonymous"></script>
+    <meta name="description" content="Discover our PGP encryption/decryption site, where you can generate keys, encrypt and decrypt messages securely. Protect your communications with our easy-to-use PGP system.">
+</head>
+
+<style>
+    body {
+    font-family: 'Urbanist', sans-serif;
+    color: #333;
+    background-image: url('static/background.jpg');
+    background-size: cover;          
+    background-position: center;     
+    background-repeat: no-repeat; 
+    background-attachment: fixed;    
+    width: 100%;                      
+    height: 100vh;                   
+    font-size: 18px;
+    margin: 0;
+    background-color: black;
+}
+</style>
+<body>
+    <div class="logo-container">
+        <img src="static/logo.webp" alt="Logo" width="200" height="200">
+    </div>
+
+    <div class="section" onclick="toggleSection('info')">
+        <h1>How to Use</h1>
+    </div>
+    <div id="info" class="section-content">
+        <p>
+            <strong>Welcome to our PGP encryption/decryption site! Our PGP (Pretty Good Privacy) system allows you to secure your messages and verify their authenticity.</strong>
+        </p>
+        <p>
+            <strong>Here's how to use our site:</strong>
+        </p>
+        <ol>
+            <li>
+                <strong>GENERATE A NEW KEY PAIR :</strong> In the "Creating new PGP keys pair" section, enter your name, email address, and choose a passphrase. Click on "GENERATE NEW PGP KEYS PAIR" to obtain a private key and a public key. Save these keys and <strong>NEVER SHARE YOUR PRIVATE KEY!</strong>
+            </li>
+            <br>
+            <li>
+                <strong>ENCRYPT A MESSAGE :</strong> In the "Encryption" section, copy the recipient's public key into the designated field. Then, enter your message in the "Enter the text to be encrypted here" field and click on "ENCRYPT TEXT". The encrypted text will be displayed in the corresponding field. You can then copy or download it.
+            </li>
+            <br>
+            <li>
+                <strong>DECRYPT A MESSAGE :</strong> In the "Decryption" section, paste your private key into the "Enter the private key here" field and enter your passphrase. Next, copy the encrypted text you received into the "Enter the text to be decoded here" field and click on "DECRYPT TEXT". The original text will be displayed in the corresponding field.
+            </li>
+            <br>
+            <li>
+                <strong>SIGN AND VERIFY A MESSAGE :</strong> In the "Sign/Verify pgp message" section, paste your private key into the "Enter the private key here" field and enter your passphrase. Then, enter your message in the "Enter the text to be signed here" field and click on "SIGN TEXT". The signature will appear in the corresponding field. To verify a signature, paste the sender's public key and the signed message into the appropriate fields, then click on "VERIFY TEXT".
+            </li>
+        </ol>
+        <p>
+            Feel free to use our PGP system to secure your communications and verify the authenticity of the messages you receive.
+        </p>
+        <p>
+            We hope you enjoy using our PGP site and that it enables you to communicate securely!
+        </p>
+    </div>
+    <div class="section" onclick="toggleSection('keyGenerationSection')">
+        <h1>GENERATE NEW PGP KEYS PAIR</h1>
+    </div>
+    <div id="keyGenerationSection" class="section-content">
+        <input type="text" id="name" placeholder="Enter your name here">
+        <input type="email" id="email" placeholder="Enter your email here">
+        <input type="password" id="passphrase" placeholder="Enter your passphrase here">
+        <button onclick="generateKeys()">GENERATE NEW PGP KEYS PAIR</button>
+        <div class="output-container">
+            <textarea id="privateKey" placeholder="Your private key will be displayed here" readonly></textarea>
+            <span class="copyIcon" onclick="copyToClipboard('privateKey')">📋</span>
+        </div>
+        <button class="downloadButton" onclick="downloadKey('privateKey')">DOWNLOAD PRIVATE KEY</button>     
+        <div class="output-container">
+            <textarea id="publicKey" placeholder="Your public key will be displayed here" readonly></textarea>
+            <span class="copyIcon" onclick="copyToClipboard('publicKey')">📋</span>
+        </div>
+        <button class="downloadButton" onclick="downloadKey('publicKey')">DOWNLOAD PUBLIC KEY</button>
+    </div>
+    
+    <div class="section" onclick="toggleSection('encryptionSection')">
+        <h1>Encrypt & Decrypt pgp message</h1>
+    </div>
+    <div id="encryptionSection" class="section-content">
+        <h2>Encrypt a Message</h2>
+        <textarea id="publicKeyEncrypt" placeholder="Enter the recipient's public key here"></textarea>
+        <button class="importButton" onclick="importKey('publicKeyEncrypt')">IMPORT PUBLIC KEY</button>
+        <textarea id="plainText" placeholder="Enter the text to be encrypted here"></textarea>
+        <button onclick="encryptMessage()">ENCRYPT TEXT</button>
+        <div class="output-container">
+            <textarea id="cipherText" placeholder="Text encrypted will be displayed here" readonly></textarea>
+            <span class="copyIcon" onclick="copyToClipboard('cipherText')">📋</span>
+        </div>
+
+        <h2>Decrypt a Message</h2>
+        <textarea id="privateKeyDecrypt" placeholder="Enter the private key here"></textarea>
+        <button class="importButton" onclick="importKey('privateKeyDecrypt')">IMPORT PRIVATE KEY</button>
+        <input type="password" id="passphraseDecrypt" placeholder="Enter the passphrase here">
+        <textarea id="cipherTextDecrypt" placeholder="Enter the text to be decoded here"></textarea>
+        <button onclick="decryptMessage()">DECRYPT TEXT</button>
+        <div class="output-container">
+            <textarea id="plainTextDecrypt" placeholder="Decoded text will be displayed here" readonly></textarea>
+            <span class="copyIcon" onclick="copyToClipboard('plainTextDecrypt')">📋</span>
+        </div>
+    </div>
+
+    <div class="section" onclick="toggleSection('signingSection')">
+        <h1>Sign & Verify pgp message</h1>
+    </div>
+    <div id="signingSection" class="section-content">
+        <h2>Sign a Message</h2>
+        <textarea id="privateKeySign" placeholder="Enter the private key here"></textarea>
+        <button class="importButton" onclick="importKey('privateKeySign')">IMPORT PRIVATE KEY</button>
+        <input type="password" id="passphraseSign" placeholder="Enter the passphrase here">
+        <textarea id="plainTextSign" placeholder="Enter the text to be signed here"></textarea>
+        <button onclick="signMessage()">SIGN TEXT</button>
+        <div class="output-container">
+            <textarea id="signedMessage" placeholder="Signed message will be displayed here" readonly></textarea>
+            <span class="copyIcon" onclick="copyToClipboard('signedMessage')">📋</span>
+        </div>
+
+        <h2>Verify a Message</h2>
+        <textarea id="publicKeyVerify" placeholder="Enter the public key of the person who signed the message here"></textarea>
+        <button class="importButton" onclick="importKey('publicKeyVerify')">IMPORT PUBLIC KEY</button>
+        <textarea id="signedMessageVerify" placeholder="Enter the signed message to be verified here"></textarea>
+        <button onclick="verifyMessage()">VERIFY TEXT</button>
+        <p id="verifyResult">Verification result will be displayed here</p>
+    </div>
+</body>
+</html>
