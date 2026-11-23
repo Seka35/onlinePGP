@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#0b1118">
+    <meta name="google-adsense-account" content="ca-pub-7594412359714045">
+    <title>Hash Generator &amp; Checksum Verifier – SHA-256, MD5 Online</title>
+    <meta name="description" content="Compute SHA-1, SHA-256, SHA-384, SHA-512, and MD5 hashes for text or files locally in your browser and verify checksums.">
+    <link rel="canonical" href="https://onlinepgp.com/tools/hash-generator/">
+    <link rel="manifest" href="/manifest.webmanifest">
+    <link rel="apple-touch-icon" href="/static/favicon.png">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Hash Generator &amp; Checksum Verifier – SHA-256, MD5 Online">
+    <meta property="og:description" content="Compute SHA-1, SHA-256, SHA-384, SHA-512, and MD5 hashes for text or files locally in your browser and verify checksums.">
+    <meta property="og:url" content="https://onlinepgp.com/tools/hash-generator/">
+    <meta property="og:image" content="https://onlinepgp.com/static/logo.webp">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Hash Generator &amp; Checksum Verifier – SHA-256, MD5 Online">
+    <meta name="twitter:description" content="Compute SHA-1, SHA-256, SHA-384, SHA-512, and MD5 hashes for text or files locally in your browser and verify checksums.">
+    <link rel="icon" href="/static/favicon.png" type="image/png">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=JetBrains+Mono:wght@400;600&display=swap">
+    <link rel="stylesheet" href="/asset/styles.css">
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        /* TODO: Enable Google's certified CMP (Privacy & messaging) in Google AdSense for EEA/UK traffic. */
+        gtag('consent', 'default', {
+            ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied', analytics_storage: 'denied',
+            region: ['AT','BE','BG','HR','CY','CZ','DK','EE','FI','FR','DE','GR','HU','IE','IT','LV','LT','LU','MT','NL','PL','PT','RO','SK','SI','ES','SE','IS','LI','NO','GB','CH']
+        });
+        gtag('consent', 'default', { ad_storage: 'granted', ad_user_data: 'granted', ad_personalization: 'granted', analytics_storage: 'granted' });
+    </script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-697PK9P2V4"></script>
+    <script>gtag('js', new Date()); gtag('config', 'G-697PK9P2V4');</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7594412359714045" crossorigin="anonymous"></script>
+    
+    <script src="/asset/script.js" defer></script>
+    <script src="/asset/tools/hash-generator.js" defer></script>
+    <script src="/asset/consent.js" defer></script>
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "Hash Generator &amp; Checksum Verifier", "url": "https://onlinepgp.com/tools/hash-generator/", "applicationCategory": "SecurityApplication", "operatingSystem": "Any", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}}</script>
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Are files uploaded when hashing?", "acceptedAnswer": {"@type": "Answer", "text": "No. Files are hashed locally in your browser using the Web Crypto API."}}, {"@type": "Question", "name": "Why is MD5 marked as insecure?", "acceptedAnswer": {"@type": "Answer", "text": "MD5 is vulnerable to collision attacks and should only be used to check legacy checksums, not security."}}, {"@type": "Question", "name": "What is the SHA-256 hash of 'abc'?", "acceptedAnswer": {"@type": "Answer", "text": "ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad."}}, {"@type": "Question", "name": "Should I use checksums or PGP signatures?", "acceptedAnswer": {"@type": "Answer", "text": "PGP signatures prove both integrity and who signed the file; checksums only verify integrity."}}]}</script>
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://onlinepgp.com/"}, {"@type": "ListItem", "position": 2, "name": "Tools", "item": "https://onlinepgp.com/tools/"}, {"@type": "ListItem", "position": 3, "name": "Hash Generator &amp; Checksum Verifier", "item": "https://onlinepgp.com/tools/hash-generator/"}]}</script>
+</head>
+<body>
+    <header class="site-header">
+        <div class="header-inner">
+            <a href="/" class="brand"><img src="/static/logo.webp" alt="OnlinePGP Logo" width="34" height="34"><span>OnlinePGP</span></a>
+            <nav aria-label="Main navigation">
+                <ul class="nav-links">
+                    <li><a href="/">Tool</a></li>
+                    <li><a href="/tools/" aria-current="page">Tools</a></li>
+                    <li><a href="/blog/">Blog</a></li>
+                    <li><a href="/about/">About</a></li>
+                    <li><a href="/contact/">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <section class="hero">
+        <div class="hero-inner">
+            <h1>Hash Generator &amp;amp; Checksum Verifier</h1>
+            <p>Calculate SHA-256, SHA-512, SHA-384, SHA-1, and legacy MD5 hashes for text or files—plus instant checksum verification.</p>
+        </div>
+    </section>
+    <main class="container">
+        <div class="breadcrumbs"><a href="/">Home</a> &rsaquo; <a href="/tools/">Tools</a> &rsaquo; Hash Generator &amp;amp; Checksum Verifier</div>
+        <section class="tool-panel" aria-label="Hash Generator &amp;amp; Checksum Verifier">
+            
+            <div id="hashStatus" class="tool-status" role="status"></div>
+            <textarea id="hashInput" placeholder="Enter text to hash (e.g. abc)" aria-label="Text to hash"></textarea>
+            <input type="file" id="hashFileInput" aria-label="Or select a file to hash" style="margin-bottom:1rem;">
+            <button type="button" onclick="computeAllHashes()">COMPUTE HASHES</button>
+            <label for="hashExpected">Verify against expected checksum (optional):</label>
+            <input type="text" id="hashExpected" placeholder="Paste expected SHA-256 / MD5 checksum here" oninput="verifyChecksum()">
+            <p id="hashVerifyResult" style="font-weight:700;"></p>
+            <label>SHA-256</label><input type="text" id="outSha256" readonly>
+            <label>SHA-512</label><input type="text" id="outSha512" readonly>
+            <label>SHA-384</label><input type="text" id="outSha384" readonly>
+            <label>SHA-1 (legacy)</label><input type="text" id="outSha1" readonly>
+            <label>MD5 (insecure / legacy only)</label><input type="text" id="outMd5" readonly>
+        
+        </section>
+        <div class="ad-slot" aria-label="Advertisement"></div>
+        <article class="card">
+            
+            <h2>What Is a Cryptographic Hash?</h2>
+            <p>A cryptographic hash function converts any text or file into a fixed-length hexadecimal digest. Even a single-bit change in the input produces a completely different hash. SHA-256 and SHA-512 are standard for verifying software downloads, ISO images, and backups.</p>
+            <h2>How to Verify a File Checksum</h2>
+            <ol>
+                <li>Select your downloaded file (or paste text) and click <strong>COMPUTE HASHES</strong>.</li>
+                <li>Paste the official checksum published by the software vendor into the verification box.</li>
+                <li>The tool immediately confirms whether the checksum matches.</li>
+            </ol>
+            <h2>Security Notes on MD5 and SHA-1</h2>
+            <p>MD5 and SHA-1 are cryptographically broken against collision attacks and should never be used for security signatures—only for legacy compatibility. For cryptographic authenticity, use SHA-256/SHA-512 or verify a PGP signature with our <a href="/tools/verify-signature/">PGP Signature Verifier</a>. You can also explore <a href="/tools/base64/">Base64 Encoder / Decoder</a>, <a href="/">Online PGP Tool</a>, and <a href="/blog/what-is-pgp/">What Is PGP?</a>.</p>
+        
+            <h2>Frequently Asked Questions</h2><h3>Are files uploaded when hashing?</h3><p>No. Files are hashed locally in your browser using the Web Crypto API.</p><h3>Why is MD5 marked as insecure?</h3><p>MD5 is vulnerable to collision attacks and should only be used to check legacy checksums, not security.</p><h3>What is the SHA-256 hash of &#x27;abc&#x27;?</h3><p>ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad.</p><h3>Should I use checksums or PGP signatures?</h3><p>PGP signatures prove both integrity and who signed the file; checksums only verify integrity.</p>
+        </article>
+        <section>
+            <h2>Related Tools</h2>
+            <div class="steps-grid">
+                <article class="step-card"><h3><a href="/tools/verify-signature/">PGP Signature Verifier</a></h3><p>Verify detached .asc/.sig file signatures.</p></article><article class="step-card"><h3><a href="/tools/pgp-file-encryption/">PGP File Encryption</a></h3><p>Encrypt and decrypt files locally.</p></article><article class="step-card"><h3><a href="/tools/base64/">Base64 Encoder / Decoder</a></h3><p>Encode or decode UTF-8 text and files.</p></article>
+            </div>
+        </section>
+    </main>
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <p>&copy; 2026 OnlinePGP.com &mdash; Client-Side OpenPGP Tool.</p>
+            <ul class="footer-links">
+                <li><a href="/privacy/">Privacy</a></li>
+                <li><a href="/terms/">Terms</a></li>
+                <li><a href="/disclaimer/">Disclaimer</a></li>
+                <li><a href="/about/">About</a></li>
+                <li><a href="/contact/">Contact</a></li>
+            </ul>
+        </div>
+    </footer>
+    <nav class="mobile-tabbar" aria-label="Mobile navigation">
+        <a href="/" aria-label="Tool"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4"/></svg><span class="sr-only">Tool</span></a>
+        <a href="/tools/" aria-current="page" aria-label="Tools"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg><span class="sr-only">Tools</span></a>
+        <a href="/blog/" aria-label="Blog"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg><span class="sr-only">Blog</span></a>
+        <a href="/about/" aria-label="About"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg><span class="sr-only">About</span></a>
+        <a href="/contact/" aria-label="Contact"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg><span class="sr-only">Contact</span></a>
+    </nav>
+    <div id="consent-banner" class="consent-banner" role="dialog" aria-label="Cookie consent">
+        <div class="consent-inner">
+            <p>We use cookies for Google Analytics and Google AdSense. Your PGP keys and messages are always processed locally in your browser. See our <a href="/privacy/">Privacy Policy</a>.</p>
+            <div class="consent-actions"><button type="button" id="consent-reject" class="consent-reject">Reject</button><button type="button" id="consent-accept">Accept</button></div>
+        </div>
+    </div>
+</body>
+</html>
