@@ -5,13 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="google-adsense-account" content="ca-pub-7594412359714045">
     <title>How to Share Your Public Key and Verify Fingerprints - OnlinePGP.com</title>
-    <meta name="description" content="Learn the safest ways to distribute your PGP public key and how to verify key fingerprints out-of-band to prevent man-in-the-middle attacks.">
+    <meta name="description" content="Learn the safest ways to distribute your PGP public key, why v4 and v6 fingerprints differ, and how to verify fingerprints out-of-band.">
     <link rel="canonical" href="https://onlinepgp.com/blog/how-to-share-public-key-verify-fingerprints/">
     <meta property="og:type" content="article">
     <meta property="og:title" content="How to Share Your Public Key and Verify Fingerprints">
-    <meta property="og:description" content="Learn the safest ways to distribute your PGP public key and how to verify key fingerprints out-of-band to prevent man-in-the-middle attacks.">
+    <meta property="og:description" content="Learn the safest ways to distribute your PGP public key, why v4 and v6 fingerprints differ, and how to verify fingerprints out-of-band.">
     <meta property="og:url" content="https://onlinepgp.com/blog/how-to-share-public-key-verify-fingerprints/">
     <meta property="og:image" content="https://onlinepgp.com/static/blog/how-to-share-public-key-verify-fingerprints-hero.webp">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="How to Share Your Public Key and Verify Fingerprints">
+    <meta name="twitter:description" content="Learn the safest ways to distribute your PGP public key, why v4 and v6 fingerprints differ, and how to verify fingerprints out-of-band.">
+    <meta name="twitter:image" content="https://onlinepgp.com/static/blog/how-to-share-public-key-verify-fingerprints-hero.webp">
     <link rel="icon" href="/static/favicon.png" type="image/png">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;600;700&display=swap">
     <link rel="stylesheet" href="/asset/styles.css">
@@ -34,14 +38,19 @@
         "@context": "https://schema.org",
         "@type": "Article",
         "headline": "How to Share Your Public Key and Verify Fingerprints",
-        "description": "Learn the safest ways to distribute your PGP public key and how to verify key fingerprints out-of-band to prevent man-in-the-middle attacks.",
+        "description": "Learn the safest ways to distribute your PGP public key, why v4 and v6 fingerprints differ, and how to verify fingerprints out-of-band.",
+        "image": "https://onlinepgp.com/static/blog/how-to-share-public-key-verify-fingerprints-hero.webp",
         "author": {
                 "@type": "Organization",
                 "name": "OnlinePGP Editorial Team"
         },
         "publisher": {
                 "@type": "Organization",
-                "name": "OnlinePGP.com"
+                "name": "OnlinePGP.com",
+                "logo": {
+                        "@type": "ImageObject",
+                        "url": "https://onlinepgp.com/static/logo.webp"
+                }
         },
         "datePublished": "2026-11-23",
         "dateModified": "2026-11-23",
@@ -58,7 +67,7 @@
                         "name": "Is it safe to post my PGP public key online?",
                         "acceptedAnswer": {
                                 "@type": "Answer",
-                                "text": "Yes. Your public key is designed to be shared openly. Just make sure you never post your private key."
+                                "text": "Yes. Your public key is designed to be shared openly so others can encrypt messages to you. Just make sure you never post your private key."
                         }
                 },
                 {
@@ -66,7 +75,7 @@
                         "name": "What is a PGP fingerprint?",
                         "acceptedAnswer": {
                                 "@type": "Answer",
-                                "text": "A fingerprint is a unique 40-character hexadecimal string derived from your public key, used to verify its authenticity."
+                                "text": "A fingerprint is a cryptographic hash of your public key\u201440 hex characters in OpenPGP v4 (SHA-1) or 64 hex characters in OpenPGP v6 (SHA-256)\u2014used to verify its authenticity."
                         }
                 },
                 {
@@ -74,7 +83,15 @@
                         "name": "Why do I need to verify a fingerprint?",
                         "acceptedAnswer": {
                                 "@type": "Answer",
-                                "text": "Without fingerprint verification, an attacker could trick you into encrypting messages with their fake public key instead of your friend's real key."
+                                "text": "Without fingerprint verification, an attacker could trick you into encrypting messages with their fake public key instead of your contact's real key."
+                        }
+                },
+                {
+                        "@type": "Question",
+                        "name": "What if two fingerprints do not match?",
+                        "acceptedAnswer": {
+                                "@type": "Answer",
+                                "text": "Stop immediately and do not use the key. A mismatch means you either have an old key or someone is attempting to impersonate your contact."
                         }
                 }
         ]
@@ -101,14 +118,15 @@
             <h1>How to Share Your Public Key and Verify Fingerprints</h1>
             <div class="article-meta">By <strong>OnlinePGP Editorial Team</strong> &bull; Published <time datetime="2026-11-23">November 23, 2026</time></div>
             <div class="img-placeholder">
-                <img src="/static/blog/how-to-share-public-key-verify-fingerprints-hero.webp" alt="Flat illustration of two users verifying a cryptographic key fingerprint" width="1200" height="630" loading="lazy" onerror="this.style.display='none'">
-                <span>Illustration: Flat illustration of two users verifying a cryptographic key fingerprint</span>
+                <img src="/static/blog/how-to-share-public-key-verify-fingerprints-hero.webp" alt="Two people comparing a glowing fingerprint icon, illustrating out-of-band PGP fingerprint verification" width="1200" height="630" loading="lazy" onerror="this.style.display='none'">
             </div>
-            <h2>Sharing Your Public Key Safely</h2><p>Once you <a href='/'>generate a PGP key online</a>, the next step is making your public key available to the people who want to write to you. Common ways to share your public key include:</p><p><ul><li>Attaching your <code>publicKey.txt</code> file to an email or hosting it at a URL on your personal website (for example, <code>yourdomain.com/pgp.txt</code>).</li><li>Publishing it on a modern keyserver such as <code>keys.openpgp.org</code>, which verifies your email address before indexing your key.</li><li>Adding your key fingerprint to your social media bio, GitHub profile, or business card.</li></ul></p>
-<h2>Why Fingerprint Verification Is Critical</h2><p>Imagine Alice wants to send an encrypted message to Bob. If an attacker intercepts Alice's search for Bob's key and substitutes a fake public key with Bob's name and email on it, Alice will unknowingly encrypt her secret message for the attacker.</p><p>To prevent this man-in-the-middle attack, Alice must verify Bob's 40-character <strong>key fingerprint</strong> through a separate, trusted channel—known as out-of-band verification. For example, Bob can read his fingerprint aloud over a voice call, send it via Signal, or print it on a physical card.</p>
-<div class="img-placeholder"><img src="/static/blog/how-to-share-public-key-verify-fingerprints-1.webp" alt="How to Share Your Public Key and Verify Fingerprints diagram" width="900" height="500" loading="lazy" onerror="this.style.display='none'"><span>Illustration: How to Share Your Public Key and Verify Fingerprints diagram</span></div>
-<h2>How to Check a Fingerprint</h2><p>In desktop tools like GnuPG, running <code>gpg --fingerprint user@example.com</code> displays the full 40-character hex string. Compare every character—not just the last 8 characters, which can be spoofed. Once verified, you can trust that key for future communications.</p><p>For more security tips, check out <a href='/blog/common-pgp-mistakes/'>Common PGP Mistakes</a> and <a href='/blog/what-is-pgp/'>What Is PGP?</a>.</p>
-<h2>Frequently Asked Questions</h2><h3>Is it safe to post my PGP public key online?</h3><p>Yes. Your public key is designed to be shared openly. Just make sure you never post your private key.</p><h3>What is a PGP fingerprint?</h3><p>A fingerprint is a unique 40-character hexadecimal string derived from your public key, used to verify its authenticity.</p><h3>Why do I need to verify a fingerprint?</h3><p>Without fingerprint verification, an attacker could trick you into encrypting messages with their fake public key instead of your friend&#x27;s real key.</p>
+            <h2>What Is Safe to Share vs. What Must Stay Secret</h2><p>Once you <a href='/'>generate a PGP key online</a>, you will have two files: a public key and a private key. Your <strong>public key</strong> and its fingerprint are meant to be shared openly—anyone who wants to send you an encrypted message or verify your digital signature needs your public key.</p><p>Your <strong>private key</strong> and passphrase, by contrast, must never be shared with anyone, posted online, or uploaded to a keyserver.</p>
+<h2>Practical Ways to Share Your Public Key</h2><p>There are several reliable ways to distribute your public key:</p><p><ul><li><strong>Direct attachment or website:</strong> Attach your <code>publicKey.txt</code> file to an email, or host it at a predictable URL on your personal website (such as <code>yourdomain.com/pgp.txt</code>).</li><li><strong>Verifying keyservers:</strong> Services like <code>keys.openpgp.org</code> send a confirmation link to your email address before publishing your identity, keeping the directory cleaner than legacy SKS keyservers (which suffered from poisoned keys and unsigned spam).</li><li><strong>Web Key Directory (WKD):</strong> Domain owners can host keys under <code>/.well-known/openpgpkey/</code> so compatible email clients fetch them automatically.</li><li><strong>QR codes and business cards:</strong> Printing your fingerprint on a physical card or encoding it in a QR code makes in-person verification easy.</li></ul></p>
+<div class="img-placeholder"><img src="/static/blog/how-to-share-public-key-verify-fingerprints-1.webp" alt="A smartphone next to a security shield, illustrating verifying a key fingerprint by a voice call" width="900" height="500" loading="lazy" onerror="this.style.display='none'"></div>
+<h2>Why Fingerprint Verification Prevents Impersonation</h2><p>Imagine Alice wants to send a confidential message to Bob. If an attacker intercepts Alice's search for Bob's key and substitutes a fake public key carrying Bob's name and email address, Alice's software will happily encrypt the message to the attacker's key.</p><p>To prevent this man-in-the-middle attack, Alice must verify Bob's <strong>key fingerprint</strong> through a separate, trusted channel—a process called out-of-band verification.</p>
+<h2>What a Fingerprint Is (v4 vs. v6) and How to Check It</h2><p>A PGP fingerprint is a unique hexadecimal string derived from a hash of the public key. In OpenPGP v4 (the format OnlinePGP.com generates), fingerprints are 40 hexadecimal characters (SHA-1). In OpenPGP v6 (RFC 9580), fingerprints are 64 hexadecimal characters (SHA-256).</p><p>Note that OnlinePGP.com does not currently display key fingerprints in its web interface. To inspect the fingerprint of a key you generated or received, import the armored public key into GnuPG (<code>gpg --import publicKey.txt</code>) and run <code>gpg --fingerprint</code>, or import it into Thunderbird's Key Manager.</p>
+<h2>Always Compare the Full Fingerprint, Not Short Key IDs</h2><p>Never rely on 8-character short key IDs (32-bit IDs), which are easy to spoof through collision attacks. Always compare the full 40-character (or 64-character) fingerprint character by character.</p><p>Good out-of-band channels include reading the fingerprint aloud on a voice or video call, comparing it in person, or sending it over an already-verified Signal chat. Trust on First Use (TOFU)—accepting a key the first time you see it without verification—is a weaker fallback when stakes are low, not a substitute for real verification. Read <a href='/blog/common-pgp-mistakes/'>Common PGP Mistakes</a> and <a href='/blog/what-is-pgp/'>What Is PGP?</a> for more.</p>
+<h2>Frequently Asked Questions</h2><h3>Is it safe to post my PGP public key online?</h3><p>Yes. Your public key is designed to be shared openly so others can encrypt messages to you. Just make sure you never post your private key.</p><h3>What is a PGP fingerprint?</h3><p>A fingerprint is a cryptographic hash of your public key—40 hex characters in OpenPGP v4 (SHA-1) or 64 hex characters in OpenPGP v6 (SHA-256)—used to verify its authenticity.</p><h3>Why do I need to verify a fingerprint?</h3><p>Without fingerprint verification, an attacker could trick you into encrypting messages with their fake public key instead of your contact&#x27;s real key.</p><h3>What if two fingerprints do not match?</h3><p>Stop immediately and do not use the key. A mismatch means you either have an old key or someone is attempting to impersonate your contact.</p>
             <div class="cta-box">
                 <h3>Try It Now with OnlinePGP.com</h3>
                 <p>Put this guide into practice right away. Generate a PGP key pair, encrypt a message, or verify a signature 100% locally in your browser.</p>

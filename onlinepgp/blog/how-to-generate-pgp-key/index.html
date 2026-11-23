@@ -5,13 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="google-adsense-account" content="ca-pub-7594412359714045">
     <title>How to Generate a PGP Key Safely - OnlinePGP.com</title>
-    <meta name="description" content="A practical guide to generating a strong PGP key pair, choosing a secure passphrase, backing up your private key, and avoiding common pitfalls.">
+    <meta name="description" content="Step-by-step guide to generating a PGP key pair safely, choosing a strong passphrase, backing up your private key, and handling revocation.">
     <link rel="canonical" href="https://onlinepgp.com/blog/how-to-generate-pgp-key/">
     <meta property="og:type" content="article">
     <meta property="og:title" content="How to Generate a PGP Key Safely">
-    <meta property="og:description" content="A practical guide to generating a strong PGP key pair, choosing a secure passphrase, backing up your private key, and avoiding common pitfalls.">
+    <meta property="og:description" content="Step-by-step guide to generating a PGP key pair safely, choosing a strong passphrase, backing up your private key, and handling revocation.">
     <meta property="og:url" content="https://onlinepgp.com/blog/how-to-generate-pgp-key/">
     <meta property="og:image" content="https://onlinepgp.com/static/blog/how-to-generate-pgp-key-hero.webp">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="How to Generate a PGP Key Safely">
+    <meta name="twitter:description" content="Step-by-step guide to generating a PGP key pair safely, choosing a strong passphrase, backing up your private key, and handling revocation.">
+    <meta name="twitter:image" content="https://onlinepgp.com/static/blog/how-to-generate-pgp-key-hero.webp">
     <link rel="icon" href="/static/favicon.png" type="image/png">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;600;700&display=swap">
     <link rel="stylesheet" href="/asset/styles.css">
@@ -34,14 +38,19 @@
         "@context": "https://schema.org",
         "@type": "Article",
         "headline": "How to Generate a PGP Key Safely",
-        "description": "A practical guide to generating a strong PGP key pair, choosing a secure passphrase, backing up your private key, and avoiding common pitfalls.",
+        "description": "Step-by-step guide to generating a PGP key pair safely, choosing a strong passphrase, backing up your private key, and handling revocation.",
+        "image": "https://onlinepgp.com/static/blog/how-to-generate-pgp-key-hero.webp",
         "author": {
                 "@type": "Organization",
                 "name": "OnlinePGP Editorial Team"
         },
         "publisher": {
                 "@type": "Organization",
-                "name": "OnlinePGP.com"
+                "name": "OnlinePGP.com",
+                "logo": {
+                        "@type": "ImageObject",
+                        "url": "https://onlinepgp.com/static/logo.webp"
+                }
         },
         "datePublished": "2026-11-23",
         "dateModified": "2026-11-23",
@@ -58,7 +67,7 @@
                         "name": "What key size should I choose for PGP?",
                         "acceptedAnswer": {
                                 "@type": "Answer",
-                                "text": "For RSA keys, 2048 bits is the minimum recommended size and 4096 bits is common for long-term keys. Modern Curve25519 (Ed25519/X25519) keys offer comparable security with much smaller key sizes."
+                                "text": "OnlinePGP.com currently generates 2048-bit RSA keys, which remain widely interoperable. For new long-term keys in desktop GnuPG, 4096-bit RSA or Curve25519 (Ed25519/X25519) is a stronger default."
                         }
                 },
                 {
@@ -75,6 +84,14 @@
                         "acceptedAnswer": {
                                 "@type": "Answer",
                                 "text": "For standard email communication, yes, because mail clients match keys by email address. For pseudonymous use, you can use a pseudonym."
+                        }
+                },
+                {
+                        "@type": "Question",
+                        "name": "Can I generate a PGP key offline?",
+                        "acceptedAnswer": {
+                                "@type": "Answer",
+                                "text": "Yes. Using GnuPG on an offline or air-gapped computer is the gold standard for high-risk threat models, because the key never touches an internet-connected device."
                         }
                 }
         ]
@@ -101,15 +118,17 @@
             <h1>How to Generate a PGP Key Safely</h1>
             <div class="article-meta">By <strong>OnlinePGP Editorial Team</strong> &bull; Published <time datetime="2026-11-23">November 23, 2026</time></div>
             <div class="img-placeholder">
-                <img src="/static/blog/how-to-generate-pgp-key-hero.webp" alt="Flat illustration of a shield and cryptographic key pair generation in a browser" width="1200" height="630" loading="lazy" onerror="this.style.display='none'">
-                <span>Illustration: Flat illustration of a shield and cryptographic key pair generation in a browser</span>
+                <img src="/static/blog/how-to-generate-pgp-key-hero.webp" alt="Browser window with a shield and a pair of cryptographic keys, illustrating in-browser PGP key generation" width="1200" height="630" loading="lazy" onerror="this.style.display='none'">
             </div>
-            <h2>Why Key Generation Matters</h2><p>Your PGP key pair is the foundation of your cryptographic identity. If your key is generated with weak randomness, protected by a guessable passphrase, or lost without a backup, your encrypted communications are at risk. Taking a few minutes to generate your key properly saves you from headaches later.</p><p>You can <a href='/'>generate a PGP key online</a> in seconds using our client-side tool, or use desktop software like GnuPG. In both cases, the same security principles apply.</p>
-<h2>Step 1: Choose Your User ID (Name and Email)</h2><p>Every PGP key includes a User ID, typically formatted as <code>Your Name &lt;you@example.com&gt;</code>. Email clients like Thunderbird and Proton Mail use this email address to automatically match incoming public keys to your contacts.</p><p>If you are creating a key for work or everyday correspondence, use your real name and primary email address. If you are creating a key for anonymous or pseudonymous whistleblowing, use a dedicated pseudonym and avoid linking it to your personal accounts.</p>
-<div class="img-placeholder"><img src="/static/blog/how-to-generate-pgp-key-1.webp" alt="How to Generate a PGP Key Safely diagram" width="900" height="500" loading="lazy" onerror="this.style.display='none'"><span>Illustration: How to Generate a PGP Key Safely diagram</span></div>
-<h2>Step 2: Pick a Strong, Unique Passphrase</h2><p>Your private key is encrypted on disk (or in your download) using a passphrase. If someone steals your private key file, the passphrase is the last line of defense preventing them from reading your messages or impersonating you.</p><p>Avoid short passwords or dictionary words. Instead, use a passphrase of at least 4 to 6 random words (for example, generated via Diceware) or a 16+ character random string stored in a reputable password manager. Never reuse your email or banking password as your PGP passphrase.</p>
-<h2>Step 3: Generate and Download Both Keys</h2><p>When you click <em>Generate New PGP Keys Pair</em> on <a href='/'>OnlinePGP.com</a>, OpenPGP.js uses your browser's cryptographically secure random number generator (<code>window.crypto.getRandomValues</code>) to create a 2048-bit RSA key pair locally.</p><p>Immediately download both your <code>publicKey.txt</code> and <code>privateKey.txt</code> files. Store your private key in an encrypted folder, a hardware-encrypted USB drive, or a secure password manager. Never upload your private key to cloud drives in plaintext or send it over unencrypted chat.</p>
-<h2>Step 4: Plan for Key Rotation and Revocation</h2><p>Even well-protected keys should not live forever. Setting an expiration date (such as 1 to 2 years) on desktop GPG keys ensures that if you lose access to a key, contacts will eventually stop using it. If you ever suspect your private key was exposed, stop using it immediately and notify your contacts.</p><p>For more on avoiding early mistakes, read <a href='/blog/common-pgp-mistakes/'>Common PGP Mistakes (and How to Avoid Them)</a> and <a href='/blog/is-online-pgp-safe/'>Is Online PGP Safe?</a>.</p>
+            <h2>Why Key Generation Matters</h2><p>Your PGP key pair is the foundation of your cryptographic identity. If your key is generated with weak randomness, protected by a guessable passphrase, or lost without a backup, your encrypted communications are at risk. Taking a few minutes to generate and store your key properly saves you from permanent data loss later.</p><p>You can <a href='/'>generate a PGP key online</a> in seconds using our client-side tool, or use desktop software like GnuPG. In both cases, the same core security principles apply.</p>
+<h2>Step 1: Choose Your User ID (Name and Email)</h2><p>Every PGP key includes a User ID, typically formatted as <code>Your Name &lt;you@example.com&gt;</code>. Email clients such as Thunderbird and Proton Mail use this email address to automatically match incoming public keys to your contacts.</p><p>If you are creating a key for work or everyday correspondence, use your real name and primary email address. If you are creating a key for anonymous or pseudonymous communication, use a dedicated pseudonym and avoid linking it to your personal accounts.</p>
+<div class="img-placeholder"><img src="/static/blog/how-to-generate-pgp-key-1.webp" alt="Password vault cards and a USB security key on a desk, illustrating private-key backup" width="900" height="500" loading="lazy" onerror="this.style.display='none'"></div>
+<h2>Step 2: Pick a Strong, Unique Passphrase</h2><p>Your private key is protected by a passphrase. If someone steals your private key file, the passphrase is the last line of defense preventing them from reading your messages or signing statements in your name.</p><p>Avoid short passwords, birthdays, or common dictionary words. Instead, use a passphrase of at least 4 to 6 random words (such as a Diceware passphrase) or a 16+ character random string stored in a reputable password manager. Never reuse your email or banking password as your PGP passphrase. Note that the current web form on OnlinePGP.com does not enforce a minimum passphrase length, so it is up to you to choose a strong one.</p>
+<h2>Step 3: Generate and Download Both Keys</h2><p>Open the <strong>Generate New PGP Keys Pair</strong> section on <a href='/'>OnlinePGP.com</a>, enter your name, email, and passphrase, and click <strong>GENERATE NEW PGP KEYS PAIR</strong>. Behind the scenes, OpenPGP.js uses your browser's cryptographically secure random number generator (<code>window.crypto.getRandomValues</code>) to create a 2048-bit RSA key pair locally—your key is never uploaded to our server.</p><p>Immediately click <strong>DOWNLOAD PRIVATE KEY</strong> and <strong>DOWNLOAD PUBLIC KEY</strong> to save <code>privateKey.txt</code> and <code>publicKey.txt</code>. Keep your private key strictly confidential and never share it with anyone.</p>
+<h2>Algorithms and Key Sizes: RSA-2048 vs. RSA-4096 and Curve25519</h2><p>Be aware of what this tool does and does not offer: OnlinePGP.com currently generates <strong>2048-bit RSA</strong> keys only and does not let you choose the algorithm or key size. RSA-2048 is still widely supported across older and newer OpenPGP clients.</p><p>However, if you are generating a long-term master key in desktop GnuPG, 4096-bit RSA or modern elliptic-curve keys—specifically Curve25519 (Ed25519 for signing and X25519 for encryption)—are better defaults. Elliptic-curve keys are faster and offer strong security margins with much smaller key sizes.</p>
+<h2>Backing Up Your Private Key Safely</h2><p>Because PGP has no central server or 'Forgot Password' recovery, losing your private key means permanently losing access to any messages encrypted to it. Store your <code>privateKey.txt</code> file in at least two secure locations: for example, inside an encrypted disk volume, on an offline hardware-encrypted USB drive, or as a secure note in your password manager.</p><p>For advanced setups, hardware security keys (such as a YubiKey) can store your private key on a tamper-resistant chip so the key material never leaves the hardware device during decryption or signing.</p>
+<h2>Expiration, Rotation, and Revocation Certificates</h2><p>Even well-protected keys should not live forever. Setting an expiration date (such as 1 to 2 years) on desktop GPG keys ensures that if you lose access to a key, contacts will eventually stop using it. You can always extend an expiration date later if you still control the key.</p><p>A <strong>revocation certificate</strong> is a special signed file that tells the world a key is no longer valid—essential if your private key is stolen or you forget your passphrase. You should generate a revocation certificate <em>while you still have working access to your key</em>. Note that OnlinePGP.com does not currently generate revocation certificates; if you need one, import your key into GnuPG and run <code>gpg --gen-revoke</code>.</p>
+<h2>What to Do Next</h2><p>Once your key pair is safely backed up, you can share your <code>publicKey.txt</code> with contacts and start encrypting. Read <a href='/blog/how-to-share-public-key-verify-fingerprints/'>How to Share Your Public Key and Verify Fingerprints</a> and <a href='/blog/how-to-encrypt-decrypt-pgp/'>How to Encrypt and Decrypt a Message with PGP Step by Step</a>.</p>
 
 <div class="recommended-box">
     <h3>Recommended Privacy Tools</h3>
@@ -121,7 +140,7 @@
     </ul>
 </div>
 
-<h2>Frequently Asked Questions</h2><h3>What key size should I choose for PGP?</h3><p>For RSA keys, 2048 bits is the minimum recommended size and 4096 bits is common for long-term keys. Modern Curve25519 (Ed25519/X25519) keys offer comparable security with much smaller key sizes.</p><h3>What happens if I forget my PGP passphrase?</h3><p>If you forget your passphrase, your private key cannot be unlocked and any messages encrypted to that key cannot be decrypted. There is no password reset in PGP.</p><h3>Should I put my real name and email in my PGP key?</h3><p>For standard email communication, yes, because mail clients match keys by email address. For pseudonymous use, you can use a pseudonym.</p>
+<h2>Frequently Asked Questions</h2><h3>What key size should I choose for PGP?</h3><p>OnlinePGP.com currently generates 2048-bit RSA keys, which remain widely interoperable. For new long-term keys in desktop GnuPG, 4096-bit RSA or Curve25519 (Ed25519/X25519) is a stronger default.</p><h3>What happens if I forget my PGP passphrase?</h3><p>If you forget your passphrase, your private key cannot be unlocked and any messages encrypted to that key cannot be decrypted. There is no password reset in PGP.</p><h3>Should I put my real name and email in my PGP key?</h3><p>For standard email communication, yes, because mail clients match keys by email address. For pseudonymous use, you can use a pseudonym.</p><h3>Can I generate a PGP key offline?</h3><p>Yes. Using GnuPG on an offline or air-gapped computer is the gold standard for high-risk threat models, because the key never touches an internet-connected device.</p>
             <div class="cta-box">
                 <h3>Try It Now with OnlinePGP.com</h3>
                 <p>Put this guide into practice right away. Generate a PGP key pair, encrypt a message, or verify a signature 100% locally in your browser.</p>

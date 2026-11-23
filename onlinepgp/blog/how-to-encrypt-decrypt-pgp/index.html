@@ -5,13 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="google-adsense-account" content="ca-pub-7594412359714045">
     <title>How to Encrypt and Decrypt a Message with PGP Step by Step - OnlinePGP.com</title>
-    <meta name="description" content="Follow this step-by-step tutorial to encrypt a message with a recipient&#x27;s public key and decrypt incoming PGP messages with your private key.">
+    <meta name="description" content="Step-by-step tutorial to encrypt a message with a recipient&#x27;s public key, decrypt with your private key, and fix common ASCII armor errors.">
     <link rel="canonical" href="https://onlinepgp.com/blog/how-to-encrypt-decrypt-pgp/">
     <meta property="og:type" content="article">
     <meta property="og:title" content="How to Encrypt and Decrypt a Message with PGP Step by Step">
-    <meta property="og:description" content="Follow this step-by-step tutorial to encrypt a message with a recipient&#x27;s public key and decrypt incoming PGP messages with your private key.">
+    <meta property="og:description" content="Step-by-step tutorial to encrypt a message with a recipient&#x27;s public key, decrypt with your private key, and fix common ASCII armor errors.">
     <meta property="og:url" content="https://onlinepgp.com/blog/how-to-encrypt-decrypt-pgp/">
     <meta property="og:image" content="https://onlinepgp.com/static/blog/how-to-encrypt-decrypt-pgp-hero.webp">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="How to Encrypt and Decrypt a Message with PGP Step by Step">
+    <meta name="twitter:description" content="Step-by-step tutorial to encrypt a message with a recipient&#x27;s public key, decrypt with your private key, and fix common ASCII armor errors.">
+    <meta name="twitter:image" content="https://onlinepgp.com/static/blog/how-to-encrypt-decrypt-pgp-hero.webp">
     <link rel="icon" href="/static/favicon.png" type="image/png">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;600;700&display=swap">
     <link rel="stylesheet" href="/asset/styles.css">
@@ -34,14 +38,19 @@
         "@context": "https://schema.org",
         "@type": "Article",
         "headline": "How to Encrypt and Decrypt a Message with PGP Step by Step",
-        "description": "Follow this step-by-step tutorial to encrypt a message with a recipient's public key and decrypt incoming PGP messages with your private key.",
+        "description": "Step-by-step tutorial to encrypt a message with a recipient's public key, decrypt with your private key, and fix common ASCII armor errors.",
+        "image": "https://onlinepgp.com/static/blog/how-to-encrypt-decrypt-pgp-hero.webp",
         "author": {
                 "@type": "Organization",
                 "name": "OnlinePGP Editorial Team"
         },
         "publisher": {
                 "@type": "Organization",
-                "name": "OnlinePGP.com"
+                "name": "OnlinePGP.com",
+                "logo": {
+                        "@type": "ImageObject",
+                        "url": "https://onlinepgp.com/static/logo.webp"
+                }
         },
         "datePublished": "2026-11-23",
         "dateModified": "2026-11-23",
@@ -74,7 +83,15 @@
                         "name": "Can I encrypt attachments or files with PGP?",
                         "acceptedAnswer": {
                                 "@type": "Answer",
-                                "text": "Yes, desktop tools like GnuPG can encrypt arbitrary binary files, while browser tools focus on text messages."
+                                "text": "Yes, desktop tools like GnuPG can encrypt arbitrary binary files, while browser tools like OnlinePGP.com focus on text messages."
+                        }
+                },
+                {
+                        "@type": "Question",
+                        "name": "Is it safe to send PGP ciphertext over ordinary email or chat?",
+                        "acceptedAnswer": {
+                                "@type": "Answer",
+                                "text": "Yes. The entire purpose of PGP is that the encrypted message block can travel over untrusted channels without revealing its contents."
                         }
                 }
         ]
@@ -101,15 +118,17 @@
             <h1>How to Encrypt and Decrypt a Message with PGP Step by Step</h1>
             <div class="article-meta">By <strong>OnlinePGP Editorial Team</strong> &bull; Published <time datetime="2026-11-23">November 23, 2026</time></div>
             <div class="img-placeholder">
-                <img src="/static/blog/how-to-encrypt-decrypt-pgp-hero.webp" alt="Flat illustration showing step-by-step message encryption and decryption workflow" width="1200" height="630" loading="lazy" onerror="this.style.display='none'">
-                <span>Illustration: Flat illustration showing step-by-step message encryption and decryption workflow</span>
+                <img src="/static/blog/how-to-encrypt-decrypt-pgp-hero.webp" alt="A document beside a locked capsule, illustrating PGP encryption and decryption" width="1200" height="630" loading="lazy" onerror="this.style.display='none'">
             </div>
-            <h2>Before You Begin</h2><p>To exchange encrypted messages with someone using PGP, you need two things: the recipient's <strong>public key</strong> (to encrypt messages to them) and your own <strong>private key</strong> plus passphrase (to decrypt messages they send to you).</p><p>If you don't have a key pair yet, <a href='/'>generate a PGP key online</a> first and share your public key with your contact.</p>
-<h2>Part 1: How to Encrypt a Message</h2><p>1. Obtain the recipient's ASCII-armored public key. It starts with <code>-----BEGIN PGP PUBLIC KEY BLOCK-----</code> and ends with <code>-----END PGP PUBLIC KEY BLOCK-----</code>.</p><p>2. Open the <strong>Encrypt &amp; Decrypt PGP Message</strong> section on <a href='/'>OnlinePGP.com</a>.</p><p>3. Paste the recipient's public key into the <em>Enter the recipient's public key here</em> box (or click <em>Import Public Key</em> to load a <code>.txt</code> file).</p><p>4. Type or paste your confidential message into the plaintext box and click <strong>ENCRYPT TEXT</strong>.</p><p>5. Copy the resulting <code>-----BEGIN PGP MESSAGE-----</code> block and send it to your recipient over email, chat, or any other channel. Even if intercepted, the ciphertext is unreadable without the recipient's private key.</p>
-<div class="img-placeholder"><img src="/static/blog/how-to-encrypt-decrypt-pgp-1.webp" alt="How to Encrypt and Decrypt a Message with PGP Step by Step diagram" width="900" height="500" loading="lazy" onerror="this.style.display='none'"><span>Illustration: How to Encrypt and Decrypt a Message with PGP Step by Step diagram</span></div>
-<h2>Part 2: How to Decrypt a Message</h2><p>1. Copy the entire encrypted message block, including the <code>-----BEGIN PGP MESSAGE-----</code> and <code>-----END PGP MESSAGE-----</code> lines. Missing even one dash will cause decryption to fail.</p><p>2. In the Decrypt section of <a href='/'>our PGP tool</a>, paste or import your <strong>private key</strong>.</p><p>3. Enter the passphrase that protects your private key.</p><p>4. Paste the encrypted message into the ciphertext box and click <strong>DECRYPT TEXT</strong>. Your original plaintext message will appear immediately.</p>
-<h2>Troubleshooting Common Decryption Errors</h2><p>If decryption fails, check three things: first, confirm the sender encrypted the message using your current public key and not an old one. Second, verify that no extra line breaks or spaces were introduced by an email client. Third, double-check your passphrase for typos.</p><p>Next, learn how to prove who sent a message in <a href='/blog/what-is-pgp/'>What Is PGP and How Does It Work?</a> or set up automatic email encryption in <a href='/blog/pgp-for-email/'>PGP for Email</a>.</p>
-<h2>Frequently Asked Questions</h2><h3>Whose key do I use to encrypt a message?</h3><p>Always use the recipient&#x27;s public key—never your own public key (unless you are encrypting a note to yourself).</p><h3>Why can&#x27;t I decrypt a message I just encrypted?</h3><p>Because it was encrypted with the recipient&#x27;s public key, only the recipient&#x27;s private key can decrypt it.</p><h3>Can I encrypt attachments or files with PGP?</h3><p>Yes, desktop tools like GnuPG can encrypt arbitrary binary files, while browser tools focus on text messages.</p>
+            <h2>Before You Begin</h2><p>To exchange encrypted messages with someone using PGP, you need two things: the recipient's <strong>public key</strong> (to encrypt messages to them) and your own <strong>private key</strong> plus passphrase (to decrypt messages they send to you).</p><p>If you do not have a key pair yet, <a href='/'>generate a PGP key online</a> first and share your public key with your contact. Before trusting a new contact's public key for sensitive topics, always <a href='/blog/how-to-share-public-key-verify-fingerprints/'>verify their key fingerprint</a>.</p>
+<h2>Part 1: How to Encrypt a Message</h2><p>1. Obtain the recipient's ASCII-armored public key. It starts with <code>-----BEGIN PGP PUBLIC KEY BLOCK-----</code> and ends with <code>-----END PGP PUBLIC KEY BLOCK-----</code>.</p><p>2. Open the <strong>Encrypt &amp; Decrypt PGP Message</strong> section on <a href='/'>OnlinePGP.com</a>.</p><p>3. Paste the recipient's public key into the field labeled <em>Enter the recipient's public key here</em> (or click <strong>IMPORT PUBLIC KEY</strong> to load a <code>.txt</code> file).</p><p>4. Type or paste your confidential message into the <em>Enter the text to be encrypted here</em> box and click <strong>ENCRYPT TEXT</strong>.</p><p>5. Copy the resulting <code>-----BEGIN PGP MESSAGE-----</code> block and send it to your recipient over email, chat, or any other channel. Even if intercepted, the ciphertext is unreadable without the recipient's private key.</p>
+<div class="img-placeholder"><img src="/static/blog/how-to-encrypt-decrypt-pgp-1.webp" alt="Two browser windows connected by a padlock and key, illustrating encrypting in one place and decrypting in another" width="900" height="500" loading="lazy" onerror="this.style.display='none'"></div>
+<h2>Encrypting to Yourself (Keeping a Readable Copy)</h2><p>A common surprise for newcomers is that once you encrypt a message to someone else's public key, <em>you cannot decrypt it yourself</em>. If you want to keep a readable copy of what you sent, desktop clients like Thunderbird and GnuPG can encrypt a message to both the recipient's key and your own public key at the same time.</p><p>Note that the current web interface on OnlinePGP.com encrypts to the single public key pasted into the field. If you need an encrypted archive copy for yourself, you would either save the plaintext locally in an encrypted folder or run a second encryption pass with your own public key.</p>
+<h2>Part 2: How to Decrypt a Message</h2><p>1. Copy the entire encrypted message block, including the <code>-----BEGIN PGP MESSAGE-----</code> and <code>-----END PGP MESSAGE-----</code> lines.</p><p>2. In the Decrypt section of <a href='/'>our PGP tool</a>, paste your private key into <em>Enter the private key here</em> (or click <strong>IMPORT PRIVATE KEY</strong>).</p><p>3. Enter the passphrase that protects your private key in <em>Enter the passphrase here</em>.</p><p>4. Paste the encrypted message into <em>Enter the text to be decoded here</em> and click <strong>DECRYPT TEXT</strong>. Your original plaintext message will appear in the output box.</p>
+<h2>ASCII Armor Pitfalls to Watch Out For</h2><p>Because PGP messages are sent as plain text, formatting changes introduced by email clients or chat apps can break decryption. Watch out for:</p><p><ul><li><strong>Missing header or footer lines:</strong> Leaving out even a single hyphen in <code>-----BEGIN PGP MESSAGE-----</code> makes the block unreadable.</li><li><strong>Line wrapping or HTML formatting:</strong> Rich-text email editors sometimes wrap long lines or insert invisible HTML tags. Always paste PGP blocks as plain text.</li><li><strong>Smart quotes or trailing spaces:</strong> Some messaging apps alter characters when copying and pasting.</li></ul></p>
+<h2>Troubleshooting Common Decryption Errors</h2><p>If decryption fails, work through this checklist: first, confirm the sender encrypted the message using your <em>current</em> public key and not an older or revoked key. Second, verify you are using the matching private key. Third, double-check your passphrase for typos or Caps Lock. Fourth, check that the ciphertext was not truncated. Finally, if the sender used a newer OpenPGP v6-only key or algorithm, an older v4 client may not support it.</p>
+<h2>Text Messages vs. Binary Files</h2><p>Browser-based tools like OnlinePGP.com are designed for text messages. If you need to encrypt photos, PDFs, or large archives, use desktop software such as GnuPG, which can encrypt arbitrary binary files directly on your computer.</p><p>Next, learn how digital signatures prove who sent a message in <a href='/blog/what-is-pgp/'>What Is PGP and How Does It Work?</a> or set up daily encrypted email in <a href='/blog/pgp-for-email/'>PGP for Email</a>.</p>
+<h2>Frequently Asked Questions</h2><h3>Whose key do I use to encrypt a message?</h3><p>Always use the recipient&#x27;s public key—never your own public key (unless you are encrypting a note to yourself).</p><h3>Why can&#x27;t I decrypt a message I just encrypted?</h3><p>Because it was encrypted with the recipient&#x27;s public key, only the recipient&#x27;s private key can decrypt it.</p><h3>Can I encrypt attachments or files with PGP?</h3><p>Yes, desktop tools like GnuPG can encrypt arbitrary binary files, while browser tools like OnlinePGP.com focus on text messages.</p><h3>Is it safe to send PGP ciphertext over ordinary email or chat?</h3><p>Yes. The entire purpose of PGP is that the encrypted message block can travel over untrusted channels without revealing its contents.</p>
             <div class="cta-box">
                 <h3>Try It Now with OnlinePGP.com</h3>
                 <p>Put this guide into practice right away. Generate a PGP key pair, encrypt a message, or verify a signature 100% locally in your browser.</p>

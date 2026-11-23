@@ -5,13 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="google-adsense-account" content="ca-pub-7594412359714045">
     <title>Common PGP Mistakes (and How to Avoid Them) - OnlinePGP.com</title>
-    <meta name="description" content="Avoid the most frequent PGP security errors, from leaking private keys and using weak passphrases to forgetting that email subject lines are not encrypted.">
+    <meta name="description" content="Avoid the 10 most common PGP mistakes, including leaking private keys, weak passphrases, unencrypted subjects, and trusting short key IDs.">
     <link rel="canonical" href="https://onlinepgp.com/blog/common-pgp-mistakes/">
     <meta property="og:type" content="article">
     <meta property="og:title" content="Common PGP Mistakes (and How to Avoid Them)">
-    <meta property="og:description" content="Avoid the most frequent PGP security errors, from leaking private keys and using weak passphrases to forgetting that email subject lines are not encrypted.">
+    <meta property="og:description" content="Avoid the 10 most common PGP mistakes, including leaking private keys, weak passphrases, unencrypted subjects, and trusting short key IDs.">
     <meta property="og:url" content="https://onlinepgp.com/blog/common-pgp-mistakes/">
     <meta property="og:image" content="https://onlinepgp.com/static/blog/common-pgp-mistakes-hero.webp">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Common PGP Mistakes (and How to Avoid Them)">
+    <meta name="twitter:description" content="Avoid the 10 most common PGP mistakes, including leaking private keys, weak passphrases, unencrypted subjects, and trusting short key IDs.">
+    <meta name="twitter:image" content="https://onlinepgp.com/static/blog/common-pgp-mistakes-hero.webp">
     <link rel="icon" href="/static/favicon.png" type="image/png">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;600;700&display=swap">
     <link rel="stylesheet" href="/asset/styles.css">
@@ -34,14 +38,19 @@
         "@context": "https://schema.org",
         "@type": "Article",
         "headline": "Common PGP Mistakes (and How to Avoid Them)",
-        "description": "Avoid the most frequent PGP security errors, from leaking private keys and using weak passphrases to forgetting that email subject lines are not encrypted.",
+        "description": "Avoid the 10 most common PGP mistakes, including leaking private keys, weak passphrases, unencrypted subjects, and trusting short key IDs.",
+        "image": "https://onlinepgp.com/static/blog/common-pgp-mistakes-hero.webp",
         "author": {
                 "@type": "Organization",
                 "name": "OnlinePGP Editorial Team"
         },
         "publisher": {
                 "@type": "Organization",
-                "name": "OnlinePGP.com"
+                "name": "OnlinePGP.com",
+                "logo": {
+                        "@type": "ImageObject",
+                        "url": "https://onlinepgp.com/static/logo.webp"
+                }
         },
         "datePublished": "2026-11-23",
         "dateModified": "2026-11-23",
@@ -58,7 +67,7 @@
                         "name": "Does PGP encrypt email subject lines?",
                         "acceptedAnswer": {
                                 "@type": "Answer",
-                                "text": "Traditional PGP only encrypts the email body and attachments, not the subject line, sender, or recipient headers."
+                                "text": "Classic inline PGP and basic PGP/MIME encrypt the message body and attachments, not the Subject, From, To, or Date headers. Only modern clients with header protection enabled hide subjects."
                         }
                 },
                 {
@@ -71,10 +80,18 @@
                 },
                 {
                         "@type": "Question",
-                        "name": "Is it safe to email my private key to myself?",
+                        "name": "Is it safe to email my private key to myself as a backup?",
                         "acceptedAnswer": {
                                 "@type": "Answer",
-                                "text": "No. Never send your private key over email or store it unencrypted in cloud storage."
+                                "text": "No. Never send your private key over unencrypted email or store it in plaintext cloud storage."
+                        }
+                },
+                {
+                        "@type": "Question",
+                        "name": "Why shouldn't I use 8-character short key IDs?",
+                        "acceptedAnswer": {
+                                "@type": "Answer",
+                                "text": "32-bit short key IDs are collision-prone and can be spoofed. Always verify the full 40-character (v4) or 64-character (v6) fingerprint."
                         }
                 }
         ]
@@ -101,16 +118,20 @@
             <h1>Common PGP Mistakes (and How to Avoid Them)</h1>
             <div class="article-meta">By <strong>OnlinePGP Editorial Team</strong> &bull; Published <time datetime="2026-11-23">November 23, 2026</time></div>
             <div class="img-placeholder">
-                <img src="/static/blog/common-pgp-mistakes-hero.webp" alt="Flat illustration highlighting common cybersecurity and PGP mistakes" width="1200" height="630" loading="lazy" onerror="this.style.display='none'">
-                <span>Illustration: Flat illustration highlighting common cybersecurity and PGP mistakes</span>
+                <img src="/static/blog/common-pgp-mistakes-hero.webp" alt="A warning triangle on a shield beside a broken padlock, illustrating common PGP security mistakes" width="1200" height="630" loading="lazy" onerror="this.style.display='none'">
             </div>
-            <h2>1. Confusing the Public Key and Private Key</h2><p>The most dangerous mistake a beginner can make is sharing their private key instead of their public key. Remember: your <strong>public key</strong> is like an open padlock you hand out so others can lock messages for you. Your <strong>private key</strong> is the only key that opens that padlock. Never paste your private key into a public forum or send it to someone else.</p>
-<h2>2. Using a Weak or Reused Passphrase</h2><p>A private key without a strong passphrase is like a locked safe with the key left in the door. Always protect your private key with a unique, high-entropy passphrase stored in a password manager.</p>
-<div class="img-placeholder"><img src="/static/blog/common-pgp-mistakes-1.webp" alt="Common PGP Mistakes (and How to Avoid Them) diagram" width="900" height="500" loading="lazy" onerror="this.style.display='none'"><span>Illustration: Common PGP Mistakes (and How to Avoid Them) diagram</span></div>
-<h2>3. Forgetting to Back Up Your Private Key</h2><p>Because PGP is decentralized, there is no 'Forgot Password' button. If your laptop dies and you did not back up your private key, you will lose access to all past encrypted messages. Store an encrypted backup in at least two safe places.</p>
-<h2>4. Assuming Metadata and Subject Lines Are Encrypted</h2><p>When you paste a PGP-encrypted block into an email, the message body is encrypted—but the <em>To</em>, <em>From</em>, <em>Date</em>, and <em>Subject</em> headers remain visible to your email provider. Never put sensitive information in the subject line.</p>
-<h2>5. Skipping Fingerprint Verification</h2><p>Blindly trusting a public key you found online without verifying its fingerprint leaves you vulnerable to impersonation. Always verify fingerprints out-of-band, as explained in <a href='/blog/how-to-share-public-key-verify-fingerprints/'>our fingerprint verification guide</a>.</p>
-<h2>Frequently Asked Questions</h2><h3>Does PGP encrypt email subject lines?</h3><p>Traditional PGP only encrypts the email body and attachments, not the subject line, sender, or recipient headers.</p><h3>Can I recover a lost private key?</h3><p>No. If you lose your private key and have no backup, any messages encrypted to it are permanently unreadable.</p><h3>Is it safe to email my private key to myself?</h3><p>No. Never send your private key over email or store it unencrypted in cloud storage.</p>
+            <h2>1. Sharing Your Private Key Instead of Your Public Key</h2><p><strong>Why it hurts:</strong> Anyone who obtains your private key can decrypt your messages and sign statements in your name. <strong>How to avoid it:</strong> Only share <code>publicKey.txt</code>. Keep <code>privateKey.txt</code> strictly private.</p>
+<h2>2. Using a Weak or Reused Passphrase</h2><p><strong>Why it hurts:</strong> If your private key file is stolen, a weak passphrase can be cracked offline. <strong>How to avoid it:</strong> Use a unique, high-entropy passphrase stored in a password manager.</p>
+<div class="img-placeholder"><img src="/static/blog/common-pgp-mistakes-1.webp" alt="A locked envelope with a visible header area, illustrating that PGP does not hide email subject lines by default" width="900" height="500" loading="lazy" onerror="this.style.display='none'"></div>
+<h2>3. Having No Backup (and No Revocation Certificate)</h2><p><strong>Why it hurts:</strong> There is no password reset in PGP. Losing your key locks you out of past encrypted mail forever. <strong>How to avoid it:</strong> Back up your private key in an encrypted volume or offline USB, and generate a revocation certificate in GnuPG while you still control the key.</p>
+<h2>4. Assuming Email Subject Lines and Headers Are Encrypted</h2><p><strong>Why it hurts:</strong> Classic inline PGP—such as pasting a block from <a href='/'>OnlinePGP.com</a> into webmail—only encrypts the message body. The Subject, To, From, and Date headers remain visible to mail servers. Even when using PGP/MIME, headers are exposed unless both clients support and enable modern header protection. <strong>How to avoid it:</strong> Keep subject lines generic.</p>
+<h2>5. Skipping Fingerprint Verification</h2><p><strong>Why it hurts:</strong> Accepting an unverified public key leaves you open to impersonation. <strong>How to avoid it:</strong> Verify fingerprints out-of-band as explained in our <a href='/blog/how-to-share-public-key-verify-fingerprints/'>fingerprint verification guide</a>.</p>
+<h2>6. Trusting Short Key IDs Instead of Full Fingerprints</h2><p><strong>Why it hurts:</strong> 8-character short key IDs can be collided intentionally. <strong>How to avoid it:</strong> Always check the full fingerprint.</p>
+<h2>7. Encrypting to an Old, Expired, or Revoked Key</h2><p><strong>Why it hurts:</strong> Your recipient may no longer have access to an old key. <strong>How to avoid it:</strong> Confirm you are using their current key before encrypting.</p>
+<h2>8. Letting HTML Email or Chat Apps Corrupt the Armor Block</h2><p><strong>Why it hurts:</strong> Extra line breaks, smart quotes, or missing hyphens break decryption. <strong>How to avoid it:</strong> Send PGP blocks in plain-text mode.</p>
+<h2>9. Screenshotting or Emailing Your Private Key as a Backup</h2><p><strong>Why it hurts:</strong> Cloud photo backups and mail servers expose your key to third parties. <strong>How to avoid it:</strong> Use encrypted local or hardware backups.</p>
+<h2>10. Expecting PGP to Hide Who You Are Talking To</h2><p><strong>Why it hurts:</strong> PGP protects message content, not network metadata. Mail providers still see sender and recipient addresses. <strong>How to avoid it:</strong> Combine PGP with appropriate operational security when metadata matters, and read <a href='/blog/how-to-generate-pgp-key/'>How to Generate a PGP Key Safely</a> and <a href='/blog/pgp-for-email/'>PGP for Email</a>.</p>
+<h2>Frequently Asked Questions</h2><h3>Does PGP encrypt email subject lines?</h3><p>Classic inline PGP and basic PGP/MIME encrypt the message body and attachments, not the Subject, From, To, or Date headers. Only modern clients with header protection enabled hide subjects.</p><h3>Can I recover a lost private key?</h3><p>No. If you lose your private key and have no backup, any messages encrypted to it are permanently unreadable.</p><h3>Is it safe to email my private key to myself as a backup?</h3><p>No. Never send your private key over unencrypted email or store it in plaintext cloud storage.</p><h3>Why shouldn&#x27;t I use 8-character short key IDs?</h3><p>32-bit short key IDs are collision-prone and can be spoofed. Always verify the full 40-character (v4) or 64-character (v6) fingerprint.</p>
             <div class="cta-box">
                 <h3>Try It Now with OnlinePGP.com</h3>
                 <p>Put this guide into practice right away. Generate a PGP key pair, encrypt a message, or verify a signature 100% locally in your browser.</p>

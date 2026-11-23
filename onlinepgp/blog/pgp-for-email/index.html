@@ -5,13 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="google-adsense-account" content="ca-pub-7594412359714045">
     <title>PGP for Email: Thunderbird, Proton Mail, and Gmail - OnlinePGP.com</title>
-    <meta name="description" content="A complete guide to using PGP encryption with Mozilla Thunderbird, Proton Mail, and Gmail—plus when to use a browser tool instead.">
+    <meta name="description" content="How to use PGP encryption with Mozilla Thunderbird, Proton Mail, and Gmail—plus inline PGP vs PGP/MIME and operational tips.">
     <link rel="canonical" href="https://onlinepgp.com/blog/pgp-for-email/">
     <meta property="og:type" content="article">
     <meta property="og:title" content="PGP for Email: Thunderbird, Proton Mail, and Gmail">
-    <meta property="og:description" content="A complete guide to using PGP encryption with Mozilla Thunderbird, Proton Mail, and Gmail—plus when to use a browser tool instead.">
+    <meta property="og:description" content="How to use PGP encryption with Mozilla Thunderbird, Proton Mail, and Gmail—plus inline PGP vs PGP/MIME and operational tips.">
     <meta property="og:url" content="https://onlinepgp.com/blog/pgp-for-email/">
     <meta property="og:image" content="https://onlinepgp.com/static/blog/pgp-for-email-hero.webp">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="PGP for Email: Thunderbird, Proton Mail, and Gmail">
+    <meta name="twitter:description" content="How to use PGP encryption with Mozilla Thunderbird, Proton Mail, and Gmail—plus inline PGP vs PGP/MIME and operational tips.">
+    <meta name="twitter:image" content="https://onlinepgp.com/static/blog/pgp-for-email-hero.webp">
     <link rel="icon" href="/static/favicon.png" type="image/png">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;600;700&display=swap">
     <link rel="stylesheet" href="/asset/styles.css">
@@ -34,14 +38,19 @@
         "@context": "https://schema.org",
         "@type": "Article",
         "headline": "PGP for Email: Thunderbird, Proton Mail, and Gmail",
-        "description": "A complete guide to using PGP encryption with Mozilla Thunderbird, Proton Mail, and Gmail\u2014plus when to use a browser tool instead.",
+        "description": "How to use PGP encryption with Mozilla Thunderbird, Proton Mail, and Gmail\u2014plus inline PGP vs PGP/MIME and operational tips.",
+        "image": "https://onlinepgp.com/static/blog/pgp-for-email-hero.webp",
         "author": {
                 "@type": "Organization",
                 "name": "OnlinePGP Editorial Team"
         },
         "publisher": {
                 "@type": "Organization",
-                "name": "OnlinePGP.com"
+                "name": "OnlinePGP.com",
+                "logo": {
+                        "@type": "ImageObject",
+                        "url": "https://onlinepgp.com/static/logo.webp"
+                }
         },
         "datePublished": "2026-11-23",
         "dateModified": "2026-11-23",
@@ -58,7 +67,7 @@
                         "name": "Does Gmail support PGP natively?",
                         "acceptedAnswer": {
                                 "@type": "Answer",
-                                "text": "No. Standard Gmail does not have built-in OpenPGP support, so you need a browser extension like Mailvelope or a client-side tool like OnlinePGP.com."
+                                "text": "No. Standard Gmail has no built-in OpenPGP support, so you need a browser extension like Mailvelope or a client-side tool like OnlinePGP.com."
                         }
                 },
                 {
@@ -66,7 +75,7 @@
                         "name": "Does Thunderbird support PGP?",
                         "acceptedAnswer": {
                                 "@type": "Answer",
-                                "text": "Yes. Mozilla Thunderbird has built-in OpenPGP support without requiring third-party plugins."
+                                "text": "Yes. Mozilla Thunderbird includes built-in OpenPGP support under Account Settings without requiring third-party plugins."
                         }
                 },
                 {
@@ -74,7 +83,15 @@
                         "name": "Does Proton Mail use PGP?",
                         "acceptedAnswer": {
                                 "@type": "Answer",
-                                "text": "Yes. Proton Mail uses OpenPGP under the hood and lets you import or export PGP keys."
+                                "text": "Proton Mail encrypts Proton-to-Proton messages automatically and supports standard OpenPGP for external contacts when you add their public key."
+                        }
+                },
+                {
+                        "@type": "Question",
+                        "name": "Can I paste an armored PGP message into any email app?",
+                        "acceptedAnswer": {
+                                "@type": "Answer",
+                                "text": "Yes. Because inline PGP is plain ASCII text, you can paste a BEGIN PGP MESSAGE block into virtually any webmail or mobile email app."
                         }
                 }
         ]
@@ -101,14 +118,16 @@
             <h1>PGP for Email: Thunderbird, Proton Mail, and Gmail</h1>
             <div class="article-meta">By <strong>OnlinePGP Editorial Team</strong> &bull; Published <time datetime="2026-11-23">November 23, 2026</time></div>
             <div class="img-placeholder">
-                <img src="/static/blog/pgp-for-email-hero.webp" alt="Flat illustration of encrypted email envelopes across desktop and webmail clients" width="1200" height="630" loading="lazy" onerror="this.style.display='none'">
-                <span>Illustration: Flat illustration of encrypted email envelopes across desktop and webmail clients</span>
+                <img src="/static/blog/pgp-for-email-hero.webp" alt="Encrypted envelopes moving between a laptop and a cloud, illustrating PGP-protected email" width="1200" height="630" loading="lazy" onerror="this.style.display='none'">
             </div>
-            <h2>Choosing the Right Email Setup</h2><p>While <a href='/'>OnlinePGP.com</a> is ideal for quick, copy-and-paste encryption in any browser, people who send encrypted emails every day often prefer integrating PGP directly into their email client. Here is how the three most popular options work.</p>
-<h2>1. Mozilla Thunderbird (Built-In OpenPGP)</h2><p>Thunderbird includes native OpenPGP support out of the box. You can generate a new key or import an existing private key under <em>Account Settings &rarr; End-to-End Encryption</em>. Once configured, Thunderbird automatically signs and encrypts messages whenever you have a recipient's public key.</p>
-<div class="img-placeholder"><img src="/static/blog/pgp-for-email-1.webp" alt="PGP for Email: Thunderbird, Proton Mail, and Gmail diagram" width="900" height="500" loading="lazy" onerror="this.style.display='none'"><span>Illustration: PGP for Email: Thunderbird, Proton Mail, and Gmail diagram</span></div>
-<h2>2. Proton Mail (Automatic OpenPGP)</h2><p>Proton Mail handles OpenPGP encryption automatically between Proton users. For external contacts who use standard PGP, you can upload their public key in your contact settings and exchange standard PGP-encrypted emails seamlessly.</p>
-<h2>3. Gmail and Webmail</h2><p>Standard Gmail does not support OpenPGP natively. To send PGP-encrypted messages from Gmail, you can either install an open-source browser extension like Mailvelope or encrypt your text locally using <a href='/'>OnlinePGP.com</a> and paste the resulting <code>-----BEGIN PGP MESSAGE-----</code> block into your Gmail compose window.</p>
+            <h2>Inline PGP vs. PGP/MIME</h2><p>When using PGP with email, you will encounter two formats: <strong>inline PGP</strong> (pasting a <code>-----BEGIN PGP MESSAGE-----</code> block directly into the email body, which is what <a href='/'>OnlinePGP.com</a> produces) and <strong>PGP/MIME</strong> (a structured email format used by desktop mail clients to encrypt both the body and attachments together).</p><p>Remember that neither format hides From, To, or Date headers, and classic inline PGP never hides the Subject line.</p>
+<h2>Choosing a Setup: Browser Tool vs. Daily Mail Client</h2><p>If you only need to encrypt an occasional message, <a href='/'>OnlinePGP.com</a> lets you encrypt and decrypt right in your browser without configuring a mail client. If you exchange encrypted emails every day, integrating OpenPGP into your email client is much more convenient.</p>
+<div class="img-placeholder"><img src="/static/blog/pgp-for-email-1.webp" alt="An email client window with a green padlock badge, illustrating encrypted email in a desktop client" width="900" height="500" loading="lazy" onerror="this.style.display='none'"></div>
+<h2>1. Mozilla Thunderbird (Built-In OpenPGP)</h2><p>Mozilla Thunderbird includes native OpenPGP support powered by the RNP library. To set it up, open <em>Account Settings &rarr; End-to-End Encryption</em>, where you can generate a new key or import an existing private key. Note that encryption is not fully automatic for every message by default: when composing an email, you enable encryption for that message once you have imported and accepted the recipient's public key.</p>
+<h2>2. Proton Mail</h2><p>Proton Mail encrypts messages between Proton users automatically. When emailing external contacts who use standard PGP, you can import their public key in your contact settings so Proton Mail encrypts outgoing messages with OpenPGP, and you can export or import your own PGP keys as needed.</p>
+<h2>3. Gmail and Standard Webmail</h2><p>Standard Gmail does not support OpenPGP natively. You have two main options: install an open-source browser extension such as Mailvelope, or encrypt your text locally using <a href='/'>OnlinePGP.com</a> and paste the armored block into Gmail's compose window (ideally in plain-text mode). Keep in mind that browser extensions have limited support on mobile webmail.</p>
+<h2>Apple Mail and Windows Outlook</h2><p>On macOS, Apple Mail users typically rely on third-party tools such as GPG Suite. On Windows, Outlook users often use Gpg4win (which includes Kleopatra and the GpgOL plugin). Whichever client you choose, make sure you back up your private key so you do not lose access if you switch devices.</p>
+<h2>Operational Tips for Encrypted Email</h2><p>Keep subject lines non-sensitive, prefer plain-text formatting when pasting inline PGP, and avoid sending encrypted messages to public mailing lists unless the list is specifically configured for it. For related guidance, read <a href='/blog/how-to-encrypt-decrypt-pgp/'>How to Encrypt and Decrypt a Message</a>, <a href='/blog/how-to-share-public-key-verify-fingerprints/'>How to Verify Fingerprints</a>, and <a href='/blog/common-pgp-mistakes/'>Common PGP Mistakes</a>.</p>
 
 <div class="recommended-box">
     <h3>Recommended Privacy Tools</h3>
@@ -120,7 +139,7 @@
     </ul>
 </div>
 
-<h2>Frequently Asked Questions</h2><h3>Does Gmail support PGP natively?</h3><p>No. Standard Gmail does not have built-in OpenPGP support, so you need a browser extension like Mailvelope or a client-side tool like OnlinePGP.com.</p><h3>Does Thunderbird support PGP?</h3><p>Yes. Mozilla Thunderbird has built-in OpenPGP support without requiring third-party plugins.</p><h3>Does Proton Mail use PGP?</h3><p>Yes. Proton Mail uses OpenPGP under the hood and lets you import or export PGP keys.</p>
+<h2>Frequently Asked Questions</h2><h3>Does Gmail support PGP natively?</h3><p>No. Standard Gmail has no built-in OpenPGP support, so you need a browser extension like Mailvelope or a client-side tool like OnlinePGP.com.</p><h3>Does Thunderbird support PGP?</h3><p>Yes. Mozilla Thunderbird includes built-in OpenPGP support under Account Settings without requiring third-party plugins.</p><h3>Does Proton Mail use PGP?</h3><p>Proton Mail encrypts Proton-to-Proton messages automatically and supports standard OpenPGP for external contacts when you add their public key.</p><h3>Can I paste an armored PGP message into any email app?</h3><p>Yes. Because inline PGP is plain ASCII text, you can paste a BEGIN PGP MESSAGE block into virtually any webmail or mobile email app.</p>
             <div class="cta-box">
                 <h3>Try It Now with OnlinePGP.com</h3>
                 <p>Put this guide into practice right away. Generate a PGP key pair, encrypt a message, or verify a signature 100% locally in your browser.</p>

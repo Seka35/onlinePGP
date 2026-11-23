@@ -6,13 +6,13 @@
   <url><loc>https://onlinepgp.com/privacy/</loc><priority>0.5</priority></url>
   <url><loc>https://onlinepgp.com/terms/</loc><priority>0.5</priority></url>
   <url><loc>https://onlinepgp.com/disclaimer/</loc><priority>0.5</priority></url>
-  <url><loc>https://onlinepgp.com/blog/</loc><priority>0.9</priority></url>
-  <url><loc>https://onlinepgp.com/blog/what-is-pgp/</loc><priority>0.8</priority></url>
-  <url><loc>https://onlinepgp.com/blog/how-to-generate-pgp-key/</loc><priority>0.8</priority></url>
-  <url><loc>https://onlinepgp.com/blog/how-to-encrypt-decrypt-pgp/</loc><priority>0.8</priority></url>
-  <url><loc>https://onlinepgp.com/blog/pgp-vs-gpg-vs-openpgp/</loc><priority>0.8</priority></url>
-  <url><loc>https://onlinepgp.com/blog/how-to-share-public-key-verify-fingerprints/</loc><priority>0.8</priority></url>
-  <url><loc>https://onlinepgp.com/blog/common-pgp-mistakes/</loc><priority>0.8</priority></url>
-  <url><loc>https://onlinepgp.com/blog/pgp-for-email/</loc><priority>0.8</priority></url>
-  <url><loc>https://onlinepgp.com/blog/is-online-pgp-safe/</loc><priority>0.8</priority></url>
+  <url><loc>https://onlinepgp.com/blog/</loc><lastmod>2026-11-23</lastmod><priority>0.9</priority></url>
+  <url><loc>https://onlinepgp.com/blog/what-is-pgp/</loc><lastmod>2026-11-23</lastmod><priority>0.8</priority></url>
+  <url><loc>https://onlinepgp.com/blog/how-to-generate-pgp-key/</loc><lastmod>2026-11-23</lastmod><priority>0.8</priority></url>
+  <url><loc>https://onlinepgp.com/blog/how-to-encrypt-decrypt-pgp/</loc><lastmod>2026-11-23</lastmod><priority>0.8</priority></url>
+  <url><loc>https://onlinepgp.com/blog/pgp-vs-gpg-vs-openpgp/</loc><lastmod>2026-11-23</lastmod><priority>0.8</priority></url>
+  <url><loc>https://onlinepgp.com/blog/how-to-share-public-key-verify-fingerprints/</loc><lastmod>2026-11-23</lastmod><priority>0.8</priority></url>
+  <url><loc>https://onlinepgp.com/blog/common-pgp-mistakes/</loc><lastmod>2026-11-23</lastmod><priority>0.8</priority></url>
+  <url><loc>https://onlinepgp.com/blog/pgp-for-email/</loc><lastmod>2026-11-23</lastmod><priority>0.8</priority></url>
+  <url><loc>https://onlinepgp.com/blog/is-online-pgp-safe/</loc><lastmod>2026-11-23</lastmod><priority>0.8</priority></url>
 </urlset>

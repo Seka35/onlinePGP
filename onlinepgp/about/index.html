@@ -11,6 +11,7 @@
     <meta property="og:title" content="About OnlinePGP.com">
     <meta property="og:description" content="Learn how OnlinePGP.com provides free, client-side PGP key generation, encryption, decryption, and signing.">
     <meta property="og:url" content="https://onlinepgp.com/about/">
+    <meta property="og:image" content="https://onlinepgp.com/static/logo.webp">
     <link rel="icon" href="/static/favicon.png" type="image/png">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;600;700&display=swap">
     <link rel="stylesheet" href="/asset/styles.css">
@@ -48,11 +49,15 @@
             <div class="breadcrumbs"><a href="/">Home</a> &rsaquo; About</div>
             <h1>About OnlinePGP.com</h1>
             <p>OnlinePGP.com was created with a simple goal: to make strong OpenPGP cryptography accessible to anyone with a web browser, without requiring complex command-line setups or software installations.</p>
-            <h2>How It Works</h2>
-            <p>Every cryptographic operation on OnlinePGP.com—including key pair generation, message encryption, decryption, digital signing, and signature verification—executes <strong>100% locally in your browser</strong> using the open-source <a href="https://openpgpjs.org/" target="_blank" rel="noopener noreferrer">OpenPGP.js</a> library.</p>
-            <p>Your private keys, passphrases, and plaintext messages are never uploaded to our servers. You can even inspect the source code on <a href="https://github.com/Seka35/onlinePGP" target="_blank" rel="noopener noreferrer">GitHub</a>.</p>
+            <h2>Who Runs OnlinePGP.com &amp; Why It Is Client-Side</h2>
+            <p>OnlinePGP.com is maintained as an open-source web utility (<a href="https://github.com/Seka35/onlinePGP" target="_blank" rel="noopener noreferrer">view the source on GitHub</a>) built for privacy-conscious individuals, developers, journalists, and students who need a fast, zero-install way to work with PGP keys and messages.</p>
+            <p>Traditional web tools often process user input on a remote server. For cryptography, that model creates unnecessary risk: if a server receives your private key or passphrase, you have to trust that the operator never logs, leaks, or misuses it. That is why OnlinePGP.com is architected as a static website where all cryptographic operations run <strong>100% locally in your browser</strong>.</p>
+            <h2>How It Works Under the Hood</h2>
+            <p>Every cryptographic operation on OnlinePGP.com—including 2048-bit RSA key pair generation, message encryption, decryption, digital signing, and signature verification—executes inside your browser's JavaScript engine using the open-source <a href="https://openpgpjs.org/" target="_blank" rel="noopener noreferrer">OpenPGP.js</a> library (v4.10.10) and your browser's Web Crypto random number generator.</p>
+            <p>Your private keys, passphrases, and plaintext messages are never uploaded to our servers. At the same time, we are transparent about how the website itself operates: we use Google Analytics and Google AdSense to measure aggregate traffic and fund hosting, with Google Consent Mode v2 enabled for visitors in the EEA and UK. Read our <a href="/privacy/">Privacy Policy</a> for full details.</p>
             <h2>Educational Mission</h2>
-            <p>Beyond the tool itself, our <a href="/blog/">PGP Blog</a> provides clear, practical guides on how Pretty Good Privacy works, how to verify key fingerprints, and how to avoid common security pitfalls.</p>
+            <p>Cryptography is only effective when people understand how to use it safely. Beyond the tool itself, our <a href="/blog/">PGP Blog</a>—written and maintained by the OnlinePGP Editorial Team—provides clear, practical guides on how Pretty Good Privacy works, how to verify key fingerprints, how to configure desktop email clients, and how to avoid common security pitfalls.</p>
+            <p>Have feedback or spotted an issue? Reach out via our <a href="/contact/">Contact page</a>.</p>
             <div class="cta-box">
                 <h3>Ready to try it?</h3>
                 <p>Generate your first key pair or encrypt a message in seconds.</p>
