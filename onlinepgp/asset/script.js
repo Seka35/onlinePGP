@@ -10,6 +10,7 @@ function switchTab(tabId) {
     if (btn) {
         btn.classList.add('active');
         btn.setAttribute('aria-selected', 'true');
+        btn.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
     }
 }
 
@@ -231,3 +232,33 @@ function importKey(elementId) {
     };
     input.click();
 }
+
+document.addEventListener('DOMContentLoaded', function () {
+    const dd = document.querySelector('.nav-dropdown');
+    if (!dd) return;
+    const toggle = dd.querySelector('.nav-dropdown-toggle');
+    const menu = dd.querySelector('.mega-menu');
+    if (!toggle || !menu) return;
+
+    function setOpen(open) {
+        dd.classList.toggle('open', open);
+        toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    }
+
+    toggle.addEventListener('click', function (e) {
+        e.preventDefault();
+        setOpen(!dd.classList.contains('open'));
+    });
+
+    dd.addEventListener('mouseenter', function () { setOpen(true); });
+    dd.addEventListener('mouseleave', function () { setOpen(false); });
+    dd.addEventListener('focusout', function (e) {
+        if (!dd.contains(e.relatedTarget)) setOpen(false);
+    });
+    document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') setOpen(false);
+    });
+    document.addEventListener('click', function (e) {
+        if (!dd.contains(e.target)) setOpen(false);
+    });
+});

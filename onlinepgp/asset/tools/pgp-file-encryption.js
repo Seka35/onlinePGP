@@ -46,7 +46,8 @@ async function encryptFilePgp() {
         if (password) {
             opts.passwords = [password];
         }
-        const { message: encryptedBytes } = await openpgp.encrypt(opts);
+        const { message } = await openpgp.encrypt(opts);
+        const encryptedBytes = message.packets.write();
         triggerDownload(encryptedBytes, file.name + '.pgp', 'application/pgp-encrypted');
         setFileStatus('encFileStatus', `Encrypted "${file.name}" locally. Download started.`, 'success');
     } catch (e) {

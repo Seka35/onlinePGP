@@ -539,3 +539,132 @@ code {
 @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after { transition: none !important; scroll-behavior: auto !important; }
 }
+
+/* Tools Mega-Menu Dropdown */
+.nav-dropdown { position: relative; display: inline-flex; align-items: center; gap: 0.2rem; }
+.nav-dropdown-toggle {
+    background: transparent;
+    color: var(--text-secondary);
+    border: none;
+    padding: 0.3rem;
+    margin: 0;
+    width: auto;
+    min-height: 32px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+}
+.nav-dropdown-toggle:hover { color: var(--accent-bright); filter: none; }
+.mega-menu {
+    position: absolute;
+    top: calc(100% + 10px);
+    left: 50%;
+    transform: translateX(-50%) translateY(6px);
+    width: min(640px, 90vw);
+    background: rgba(17, 26, 36, 0.96);
+    backdrop-filter: blur(16px);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-lg);
+    padding: 0.85rem;
+    box-shadow: var(--shadow-soft);
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.5rem;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.18s ease, transform 0.18s ease, visibility 0.18s;
+    z-index: 300;
+}
+.nav-dropdown.open .mega-menu {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateX(-50%) translateY(0);
+}
+.mega-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.6rem 0.75rem;
+    border-radius: var(--radius-md);
+    text-decoration: none;
+    color: var(--text-primary);
+}
+.mega-item:hover { background: rgba(16, 185, 129, 0.12); text-decoration: none; }
+.mega-item img { width: 40px; height: 40px; border-radius: 8px; flex-shrink: 0; object-fit: contain; }
+.mega-item strong { display: block; font-size: 0.92rem; color: var(--text-primary); }
+.mega-item span { display: block; font-size: 0.78rem; color: var(--text-secondary); line-height: 1.3; }
+
+/* Single-row scrollable tool tabs on mobile */
+.tool-tabs {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    -webkit-mask-image: linear-gradient(to right, black 90%, transparent 100%);
+    mask-image: linear-gradient(to right, black 90%, transparent 100%);
+}
+.tool-tabs::-webkit-scrollbar { display: none; }
+.tab-btn { flex: 0 0 auto; scroll-snap-align: start; white-space: nowrap; }
+
+/* Output Toolbar (never covers textarea text) */
+.output-toolbar {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.5rem;
+    margin-bottom: 0.4rem;
+}
+.output-toolbar .copyIcon {
+    position: static;
+    min-height: 44px;
+    padding: 0.45rem 0.9rem;
+    font-size: 0.85rem;
+    gap: 0.4rem;
+    width: auto;
+    margin: 0;
+}
+
+/* Emerald range & checkbox controls */
+input[type="range"], input[type="checkbox"] { accent-color: #10b981; }
+
+/* Collapse empty ad-slot */
+.ad-slot { min-height: 0; margin: 0; }
+.ad-slot:not(:empty) { min-height: 90px; margin: 1.5rem 0; }
+
+/* Tools Hub Cards */
+.tool-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-lg);
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.65rem;
+    transition: transform 0.2s ease, border-color 0.2s ease;
+}
+.tool-card:hover { transform: translateY(-4px); border-color: var(--border-accent); }
+.tool-icon-wrap {
+    width: 96px;
+    height: 96px;
+    border-radius: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: radial-gradient(circle, rgba(16, 185, 129, 0.22) 0%, transparent 70%);
+}
+.tool-icon-wrap img { width: 84px; height: 84px; object-fit: contain; }
+.category-chip {
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 0.2rem 0.6rem;
+    border-radius: 999px;
+    background: rgba(16, 185, 129, 0.14);
+    color: var(--accent-bright);
+    border: 1px solid var(--border-accent);
+}
+.tool-hero-icon { width: 72px; height: 72px; margin: 0 auto 0.75rem; display: block; object-fit: contain; }

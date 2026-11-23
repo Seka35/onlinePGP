@@ -31,6 +31,7 @@
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-697PK9P2V4"></script>
     <script>gtag('js', new Date()); gtag('config', 'G-697PK9P2V4');</script>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7594412359714045" crossorigin="anonymous"></script>
+    <script src="/asset/script.js" defer></script>
     <script src="/asset/consent.js" defer></script>
 </head>
 <body>
@@ -38,16 +39,24 @@
         <div class="header-inner">
             <a href="/" class="brand"><img src="/static/logo.webp" alt="OnlinePGP Logo" width="36" height="36"><span>OnlinePGP</span></a>
             <nav aria-label="Main navigation">
-                <ul class="nav-links">
+                                <ul class="nav-links">
                     <li><a href="/">Tool</a></li>
-                    <li><a href="/tools/">Tools</a></li>
-                    <li><a href="/tools/" aria-label="Tools">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
-            <span class="sr-only">Tools</span>
-        </a>
-        <a href="/blog/">Blog</a></li>
-                    <li><a href="/about/">About</a></li>
-                    <li><a href="/contact/">Contact</a></li>
+                    <li class="nav-dropdown">
+                        <a href="/tools/">Tools</a>
+                        <button type="button" class="nav-dropdown-toggle" aria-expanded="false" aria-haspopup="true" aria-controls="tools-mega-menu" aria-label="Toggle Tools menu">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+                        </button>
+                        <div id="tools-mega-menu" class="mega-menu" role="menu">
+                            <a href="/" class="mega-item" role="menuitem"><img src="/static/tools/pgp-tool.webp" alt="" width="40" height="40"><div><strong>Online PGP Tool</strong><span>Generate keys, encrypt, decrypt, sign and verify text</span></div></a>
+                            <a href="/tools/pgp-key-viewer/" class="mega-item" role="menuitem"><img src="/static/tools/pgp-key-viewer.webp" alt="" width="40" height="40"><div><strong>PGP Key Viewer</strong><span>Inspect fingerprint, algorithm, user IDs and subkeys</span></div></a>
+                            <a href="/tools/pgp-file-encryption/" class="mega-item" role="menuitem"><img src="/static/tools/pgp-file-encryption.webp" alt="" width="40" height="40"><div><strong>PGP File Encryption</strong><span>Encrypt or decrypt files locally with a key or password</span></div></a>
+                            <a href="/tools/password-generator/" class="mega-item" role="menuitem"><img src="/static/tools/password-generator.webp" alt="" width="40" height="40"><div><strong>Password &amp; Passphrase Generator</strong><span>High-entropy random passwords and passphrases</span></div></a>
+                            <a href="/tools/hash-generator/" class="mega-item" role="menuitem"><img src="/static/tools/hash-generator.webp" alt="" width="40" height="40"><div><strong>Hash &amp; Checksum Verifier</strong><span>SHA-2, SHA-1 and MD5 for text or files</span></div></a>
+                            <a href="/tools/base64/" class="mega-item" role="menuitem"><img src="/static/tools/base64.webp" alt="" width="40" height="40"><div><strong>Base64 Encoder / Decoder</strong><span>UTF-8 and file Base64, with URL-safe mode</span></div></a>
+                            <a href="/tools/verify-signature/" class="mega-item" role="menuitem"><img src="/static/tools/verify-signature.webp" alt="" width="40" height="40"><div><strong>PGP Signature Verifier</strong><span>Verify clear-signed text and detached signatures</span></div></a>
+                        </div>
+                    </li>
+                    <li><a href="/blog/">Blog</a></li>
                 </ul>
             </nav>
         </div>
@@ -75,22 +84,18 @@
             </ul>
         </div>
     </footer>
-        <nav class="mobile-tabbar" aria-label="Mobile navigation">
+            <nav class="mobile-tabbar" aria-label="Mobile navigation">
         <a href="/" aria-label="Tool">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4"/></svg>
             <span class="sr-only">Tool</span>
         </a>
+        <a href="/tools/" aria-label="Tools">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+            <span class="sr-only">Tools</span>
+        </a>
         <a href="/blog/" aria-label="Blog">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
             <span class="sr-only">Blog</span>
-        </a>
-        <a href="/about/" aria-label="About">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
-            <span class="sr-only">About</span>
-        </a>
-        <a href="/contact/" aria-label="Contact">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-            <span class="sr-only">Contact</span>
         </a>
     </nav>
     <div id="consent-banner" class="consent-banner" role="dialog" aria-label="Cookie consent">
