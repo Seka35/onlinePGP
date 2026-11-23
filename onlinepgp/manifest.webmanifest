@@ -1,0 +1,21 @@
+{
+  "name": "OnlinePGP - Client-Side OpenPGP Tool",
+  "short_name": "OnlinePGP",
+  "description": "Generate PGP keys, encrypt, decrypt, sign, and verify messages 100% locally in your browser.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0b1118",
+  "theme_color": "#0b1118",
+  "icons": [
+    {
+      "src": "/static/favicon.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/static/logo.webp",
+      "sizes": "512x512",
+      "type": "image/webp"
+    }
+  ]
+}

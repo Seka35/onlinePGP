@@ -3,10 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#0b1118">
     <meta name="google-adsense-account" content="ca-pub-7594412359714045">
     <title>PGP vs GPG vs OpenPGP: What Is the Difference? - OnlinePGP.com</title>
     <meta name="description" content="Understand the exact difference between PGP (the original software), OpenPGP (the open standard), and GPG / GnuPG (the free implementation).">
     <link rel="canonical" href="https://onlinepgp.com/blog/pgp-vs-gpg-vs-openpgp/">
+    <link rel="manifest" href="/manifest.webmanifest">
+    <link rel="apple-touch-icon" href="/static/favicon.png">
     <meta property="og:type" content="article">
     <meta property="og:title" content="PGP vs GPG vs OpenPGP: What Is the Difference?">
     <meta property="og:description" content="Understand the exact difference between PGP (the original software), OpenPGP (the open standard), and GPG / GnuPG (the free implementation).">
@@ -17,7 +20,7 @@
     <meta name="twitter:description" content="Understand the exact difference between PGP (the original software), OpenPGP (the open standard), and GPG / GnuPG (the free implementation).">
     <meta name="twitter:image" content="https://onlinepgp.com/static/blog/pgp-vs-gpg-vs-openpgp-hero.webp">
     <link rel="icon" href="/static/favicon.png" type="image/png">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;600;700&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=JetBrains+Mono:wght@400;600&display=swap">
     <link rel="stylesheet" href="/asset/styles.css">
     <script>
         window.dataLayer = window.dataLayer || [];
@@ -101,7 +104,7 @@
 <body>
     <header class="site-header">
         <div class="header-inner">
-            <a href="/" class="brand"><img src="/static/logo.webp" alt="OnlinePGP Logo" width="36" height="36"><span>OnlinePGP</span></a>
+            <a href="/" class="brand"><img src="/static/logo.webp" alt="OnlinePGP Logo" width="34" height="34"><span>OnlinePGP</span></a>
             <nav aria-label="Main navigation">
                 <ul class="nav-links">
                     <li><a href="/">Tool</a></li>
@@ -112,29 +115,45 @@
             </nav>
         </div>
     </header>
-    <main class="container">
-        <article class="card">
-            <div class="breadcrumbs"><a href="/">Home</a> &rsaquo; <a href="/blog/">Blog</a> &rsaquo; PGP vs GPG vs OpenPGP: What Is the Difference?</div>
-            <h1>PGP vs GPG vs OpenPGP: What Is the Difference?</h1>
-            <div class="article-meta">By <strong>OnlinePGP Editorial Team</strong> &bull; Published <time datetime="2026-11-23">November 23, 2026</time></div>
-            <div class="img-placeholder">
-                <img src="/static/blog/pgp-vs-gpg-vs-openpgp-hero.webp" alt="Three interlocking gears representing the PGP product, the OpenPGP standard, and GnuPG software" width="1200" height="630" loading="lazy" onerror="this.style.display='none'">
-            </div>
-            <h2>Why People Confuse PGP, GPG, and OpenPGP</h2><p>If you have ever searched for email encryption, you have probably seen the terms PGP, GPG, and OpenPGP used interchangeably. While they are closely related, they refer to three distinct things: a historical and commercial product, an open technical standard, and a free software implementation.</p>
-<h2>1. PGP (Pretty Good Privacy)</h2><p>PGP was the original encryption program written by Phil Zimmermann in 1991. Over the years, PGP was commercialized and acquired by several companies—eventually becoming Symantec Encryption Desktop under Broadcom. Today, people often say 'PGP' casually to refer to any OpenPGP-compatible encryption tool.</p>
-<div class="img-placeholder"><img src="/static/blog/pgp-vs-gpg-vs-openpgp-1.webp" alt="A blueprint scroll beside a terminal and a browser window, illustrating OpenPGP implementations" width="900" height="500" loading="lazy" onerror="this.style.display='none'"></div>
-<h2>2. OpenPGP (The Open Standard)</h2><p>In 1997, the Internet Engineering Task Force (IETF) formed the OpenPGP working group to turn PGP's message and key format into an open, vendor-neutral specification. The group published RFC 2440 in 1998, updated it to RFC 4880 in 2007, and released RFC 9580 (OpenPGP v6) in July 2024.</p><p>Because OpenPGP is an open standard, anyone can build compatible software without paying licensing fees. <a href='/'>OnlinePGP.com</a> uses OpenPGP.js, a JavaScript implementation of this standard.</p>
-<h2>3. GPG / GnuPG (GNU Privacy Guard)</h2><p>GnuPG (commonly abbreviated as GPG) is a free, open-source implementation of the OpenPGP standard maintained by the GNU Project. It is pre-installed on many Linux distributions and powers desktop bundles such as Gpg4win on Windows and GPG Suite on macOS.</p>
-<h2>Other OpenPGP Implementations Worth Knowing</h2><p>Beyond GnuPG and OpenPGP.js, several other major implementations power everyday privacy tools: <strong>RNP</strong> (a C++ OpenPGP library used natively by Mozilla Thunderbird), <strong>Mailvelope</strong> (a browser extension for webmail), and Proton Mail's built-in OpenPGP engine.</p>
-<h2>Quick Comparison</h2><p><ul><li><strong>PGP:</strong> Original 1991 software and commercial brand; proprietary in its commercial form.</li><li><strong>OpenPGP:</strong> Open IETF specification (RFC 2440 / 4880 / 9580); defines how keys and messages are formatted.</li><li><strong>GPG (GnuPG):</strong> Free, open-source command-line software implementing OpenPGP; ideal for desktop, scripts, and offline keys.</li><li><strong>OpenPGP.js:</strong> Open-source JavaScript library implementing OpenPGP in the browser, powering <a href='/'>OnlinePGP.com</a>.</li></ul></p>
-<h2>Compatibility and Which One to Choose</h2><p>Because all of these tools implement the OpenPGP standard, keys and messages usually interoperate smoothly—especially when using widely supported algorithms like RSA-2048. One caveat to keep in mind is that very old clients may not understand modern RFC 9580 (v6) keys or newer elliptic-curve algorithms.</p><p>For quick, zero-install browser encryption, use <a href='/'>OnlinePGP.com</a>. For daily email, see <a href='/blog/pgp-for-email/'>PGP for Email</a>. To understand the security trade-offs of browser tools, read <a href='/blog/is-online-pgp-safe/'>Is Online PGP Safe?</a> and <a href='/blog/what-is-pgp/'>What Is PGP?</a>.</p>
-<h2>Frequently Asked Questions</h2><h3>Are PGP and GPG compatible with each other?</h3><p>Yes. Both follow the OpenPGP standard, so keys and messages created in one generally work in the other when both sides support the same algorithms.</p><h3>Is OpenPGP a program I can download?</h3><p>No. OpenPGP is a technical specification (standard), not a piece of software.</p><h3>Which one should I use?</h3><p>For quick browser tasks, use OnlinePGP.com. For daily email, use Thunderbird or Proton Mail. For command-line automation or offline keys, use GnuPG (GPG).</p><h3>Will a key generated on OnlinePGP.com work in GnuPG?</h3><p>Yes. OnlinePGP.com generates standard v4 RSA-2048 OpenPGP keys that can be imported directly into GnuPG, Thunderbird, and Proton Mail.</p>
-            <div class="cta-box">
-                <h3>Try It Now with OnlinePGP.com</h3>
-                <p>Put this guide into practice right away. Generate a PGP key pair, encrypt a message, or verify a signature 100% locally in your browser.</p>
-                <a href="/" class="btn">Open the Online PGP Tool</a>
-            </div>
-        </article>
+    <main class="container" style="margin-top: 2rem;">
+        <div class="breadcrumbs"><a href="/">Home</a> &rsaquo; <a href="/blog/">Blog</a> &rsaquo; PGP vs GPG vs OpenPGP: What Is the Difference?</div>
+        <div class="article-layout">
+            <aside>
+                <details class="toc-box" open>
+                    <summary>Table of Contents</summary>
+                    <ul>
+                        <li><a href="#why-people-confuse-pgp-gpg-and-openpgp">Why People Confuse PGP, GPG, and OpenPGP</a></li>
+                        <li><a href="#1-pgp-pretty-good-privacy">1. PGP (Pretty Good Privacy)</a></li>
+                        <li><a href="#2-openpgp-the-open-standard">2. OpenPGP (The Open Standard)</a></li>
+                        <li><a href="#3-gpg-gnupg-gnu-privacy-guard">3. GPG / GnuPG (GNU Privacy Guard)</a></li>
+                        <li><a href="#other-openpgp-implementations-worth-knowing">Other OpenPGP Implementations Worth Knowing</a></li>
+                        <li><a href="#compatibility-and-which-one-to-choose">Compatibility and Which One to Choose</a></li>
+                        <li><a href="#faq">Frequently Asked Questions</a></li>
+                    </ul>
+                </details>
+            </aside>
+            <article class="card article-content">
+                <h1>PGP vs GPG vs OpenPGP: What Is the Difference?</h1>
+                <div class="article-meta">By <strong>OnlinePGP Editorial Team</strong> &bull; Published <time datetime="2026-11-23">November 23, 2026</time> &bull; 4 min read</div>
+                <img class="article-hero-img" src="/static/blog/pgp-vs-gpg-vs-openpgp-hero.webp" alt="Three interlocking gears representing the PGP product, the OpenPGP standard, and GnuPG software" width="1200" height="630" loading="lazy">
+                <h2 id="why-people-confuse-pgp-gpg-and-openpgp">Why People Confuse PGP, GPG, and OpenPGP</h2><p>If you have ever searched for email encryption, you have probably seen the terms PGP, GPG, and OpenPGP used interchangeably. While they are closely related, they refer to three distinct things: a historical and commercial product, an open technical standard, and a free software implementation.</p>
+<h2 id="1-pgp-pretty-good-privacy">1. PGP (Pretty Good Privacy)</h2><p>PGP was the original encryption program written by Phil Zimmermann in 1991. Over the years, PGP was commercialized and acquired by several companies—eventually becoming Symantec Encryption Desktop under Broadcom. Today, people often say 'PGP' casually to refer to any OpenPGP-compatible encryption tool.</p>
+<img class="article-mid-img" src="/static/blog/pgp-vs-gpg-vs-openpgp-1.webp" alt="A blueprint scroll beside a terminal and a browser window, illustrating OpenPGP implementations" width="900" height="500" loading="lazy">
+<h2 id="2-openpgp-the-open-standard">2. OpenPGP (The Open Standard)</h2><p>In 1997, the Internet Engineering Task Force (IETF) formed the OpenPGP working group to turn PGP's message and key format into an open, vendor-neutral specification. The group published RFC 2440 in 1998, updated it to RFC 4880 in 2007, and released RFC 9580 (OpenPGP v6) in July 2024.</p><p>Because OpenPGP is an open standard, anyone can build compatible software without paying licensing fees. <a href='/'>OnlinePGP.com</a> uses OpenPGP.js, a JavaScript implementation of this standard.</p>
+<h2 id="3-gpg-gnupg-gnu-privacy-guard">3. GPG / GnuPG (GNU Privacy Guard)</h2><p>GnuPG (commonly abbreviated as GPG) is a free, open-source implementation of the OpenPGP standard maintained by the GNU Project. It is pre-installed on many Linux distributions and powers desktop bundles such as Gpg4win on Windows and GPG Suite on macOS.</p>
+<h2 id="other-openpgp-implementations-worth-knowing">Other OpenPGP Implementations Worth Knowing</h2><p>Beyond GnuPG and OpenPGP.js, several other major implementations power everyday privacy tools: <strong>RNP</strong> (a C++ OpenPGP library used natively by Mozilla Thunderbird), <strong>Mailvelope</strong> (a browser extension for webmail), and Proton Mail's built-in OpenPGP engine.</p>
+<h2 id="compatibility-and-which-one-to-choose">Compatibility and Which One to Choose</h2><p>Because all of these tools implement the OpenPGP standard, keys and messages usually interoperate smoothly—especially when using widely supported algorithms like RSA-2048. One caveat to keep in mind is that very old clients may not understand modern RFC 9580 (v6) keys or newer elliptic-curve algorithms.</p><p>For quick, zero-install browser encryption, use <a href='/'>OnlinePGP.com</a>. For daily email, see <a href='/blog/pgp-for-email/'>PGP for Email</a>. To understand the security trade-offs of browser tools, read <a href='/blog/is-online-pgp-safe/'>Is Online PGP Safe?</a> and <a href='/blog/what-is-pgp/'>What Is PGP?</a>.</p>
+<h2 id="faq">Frequently Asked Questions</h2><h3>Are PGP and GPG compatible with each other?</h3><p>Yes. Both follow the OpenPGP standard, so keys and messages created in one generally work in the other when both sides support the same algorithms.</p><h3>Is OpenPGP a program I can download?</h3><p>No. OpenPGP is a technical specification (standard), not a piece of software.</p><h3>Which one should I use?</h3><p>For quick browser tasks, use OnlinePGP.com. For daily email, use Thunderbird or Proton Mail. For command-line automation or offline keys, use GnuPG (GPG).</p><h3>Will a key generated on OnlinePGP.com work in GnuPG?</h3><p>Yes. OnlinePGP.com generates standard v4 RSA-2048 OpenPGP keys that can be imported directly into GnuPG, Thunderbird, and Proton Mail.</p>
+                <div class="cta-box">
+                    <h3>Try It Now with OnlinePGP.com</h3>
+                    <p>Put this guide into practice right away. Generate a PGP key pair, encrypt a message, or verify a signature 100% locally in your browser.</p>
+                    <a href="/" class="btn">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                        Open the Online PGP Tool
+                    </a>
+                </div>
+            </article>
+        </div>
     </main>
     <footer class="site-footer">
         <div class="footer-inner">
@@ -148,9 +167,27 @@
             </ul>
         </div>
     </footer>
+    <nav class="mobile-tabbar" aria-label="Mobile navigation">
+        <a href="/" aria-label="Tool">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4"/></svg>
+            <span class="sr-only">Tool</span>
+        </a>
+        <a href="/blog/" aria-current="page" aria-label="Blog">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+            <span class="sr-only">Blog</span>
+        </a>
+        <a href="/about/" aria-label="About">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+            <span class="sr-only">About</span>
+        </a>
+        <a href="/contact/" aria-label="Contact">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            <span class="sr-only">Contact</span>
+        </a>
+    </nav>
     <div id="consent-banner" class="consent-banner" role="dialog" aria-label="Cookie consent">
         <div class="consent-inner">
-            <p>We use cookies for Google Analytics and Google AdSense. Your PGP keys and messages are always processed locally in your browser. See our <a href="/privacy/" style="color:#6ee7b7;">Privacy Policy</a>.</p>
+            <p>We use cookies for Google Analytics and Google AdSense. Your PGP keys and messages are always processed locally in your browser. See our <a href="/privacy/">Privacy Policy</a>.</p>
             <div class="consent-actions">
                 <button type="button" id="consent-reject" class="consent-reject">Reject</button>
                 <button type="button" id="consent-accept">Accept</button>

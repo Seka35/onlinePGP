@@ -3,12 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#0b1118">
     <meta name="google-adsense-account" content="ca-pub-7594412359714045">
     <title>PGP Guides &amp; Security Blog - OnlinePGP.com</title>
     <meta name="description" content="In-depth, practical guides on Pretty Good Privacy (PGP), OpenPGP key generation, message encryption, fingerprint verification, and email security.">
     <link rel="canonical" href="https://onlinepgp.com/blog/">
+    <link rel="manifest" href="/manifest.webmanifest">
+    <link rel="apple-touch-icon" href="/static/favicon.png">
     <meta property="og:type" content="website">
     <meta property="og:title" content="PGP Guides &amp; Security Blog - OnlinePGP.com">
+    <meta property="og:description" content="In-depth, practical guides on Pretty Good Privacy (PGP), OpenPGP key generation, message encryption, fingerprint verification, and email security.">
     <meta property="og:url" content="https://onlinepgp.com/blog/">
     <meta property="og:image" content="https://onlinepgp.com/static/logo.webp">
     <script type="application/ld+json">
@@ -21,7 +25,7 @@
     }
     </script>
     <link rel="icon" href="/static/favicon.png" type="image/png">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;600;700&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=JetBrains+Mono:wght@400;600&display=swap">
     <link rel="stylesheet" href="/asset/styles.css">
     <script>
         window.dataLayer = window.dataLayer || [];
@@ -41,7 +45,7 @@
 <body>
     <header class="site-header">
         <div class="header-inner">
-            <a href="/" class="brand"><img src="/static/logo.webp" alt="OnlinePGP Logo" width="36" height="36"><span>OnlinePGP</span></a>
+            <a href="/" class="brand"><img src="/static/logo.webp" alt="OnlinePGP Logo" width="34" height="34"><span>OnlinePGP</span></a>
             <nav aria-label="Main navigation">
                 <ul class="nav-links">
                     <li><a href="/">Tool</a></li>
@@ -66,61 +70,93 @@
             <p>These guides are written for everyday users, developers, journalists, and privacy-conscious readers. Each tutorial pairs clear explanations with practical steps you can test immediately using our <a href="/">free client-side Online PGP tool</a>—where keys and messages stay in your browser.</p>
         </section>
         <div class="blog-grid">
-            <article class="blog-card">
-                <div>
-                    <h2><a href="/blog/what-is-pgp/">What Is PGP and How Does It Work?</a></h2>
-                    <p>Understand public-key cryptography, hybrid encryption, and digital signatures in plain English.</p>
+            <article class="blog-card featured">
+                <img src="/static/blog/what-is-pgp-hero.webp" alt="Two people exchanging a locked envelope, illustrating public-key message encryption" width="1200" height="630" loading="lazy">
+                <div class="blog-card-body">
+                    <div>
+                        <div class="blog-card-meta">Fundamentals &bull; 9 min read</div>
+                        <h2><a href="/blog/what-is-pgp/">What Is PGP and How Does It Work?</a></h2>
+                        <p>Understand public-key cryptography, hybrid encryption, digital signatures, and when OpenPGP is the right tool.</p>
+                    </div>
+                    <a href="/blog/what-is-pgp/" class="btn">Read Guide</a>
                 </div>
-                <a href="/blog/what-is-pgp/" class="btn">Read Guide</a>
             </article>
             <article class="blog-card">
-                <div>
-                    <h2><a href="/blog/how-to-generate-pgp-key/">How to Generate a PGP Key Safely</a></h2>
-                    <p>Step-by-step best practices for creating strong key pairs, choosing passphrases, and backing up keys.</p>
+                <img src="/static/blog/how-to-generate-pgp-key-hero.webp" alt="Browser window with a shield and a pair of cryptographic keys, illustrating in-browser PGP key generation" width="1200" height="630" loading="lazy">
+                <div class="blog-card-body">
+                    <div>
+                        <div class="blog-card-meta">Key Management &bull; 8 min read</div>
+                        <h2><a href="/blog/how-to-generate-pgp-key/">How to Generate a PGP Key Safely</a></h2>
+                        <p>Step-by-step best practices for creating strong key pairs, choosing passphrases, and backing up keys.</p>
+                    </div>
+                    <a href="/blog/how-to-generate-pgp-key/" class="btn">Read Guide</a>
                 </div>
-                <a href="/blog/how-to-generate-pgp-key/" class="btn">Read Guide</a>
             </article>
             <article class="blog-card">
-                <div>
-                    <h2><a href="/blog/how-to-encrypt-decrypt-pgp/">How to Encrypt and Decrypt a Message with PGP Step by Step</a></h2>
-                    <p>A complete walkthrough of encrypting for a recipient and decrypting with your private key.</p>
+                <img src="/static/blog/how-to-encrypt-decrypt-pgp-hero.webp" alt="A document beside a locked capsule, illustrating PGP encryption and decryption" width="1200" height="630" loading="lazy">
+                <div class="blog-card-body">
+                    <div>
+                        <div class="blog-card-meta">Tutorial &bull; 8 min read</div>
+                        <h2><a href="/blog/how-to-encrypt-decrypt-pgp/">How to Encrypt and Decrypt a Message with PGP Step by Step</a></h2>
+                        <p>A complete walkthrough of encrypting for a recipient and decrypting with your private key.</p>
+                    </div>
+                    <a href="/blog/how-to-encrypt-decrypt-pgp/" class="btn">Read Guide</a>
                 </div>
-                <a href="/blog/how-to-encrypt-decrypt-pgp/" class="btn">Read Guide</a>
             </article>
             <article class="blog-card">
-                <div>
-                    <h2><a href="/blog/pgp-vs-gpg-vs-openpgp/">PGP vs GPG vs OpenPGP: What Is the Difference?</a></h2>
-                    <p>Clarify the history, standards, and software implementations behind PGP, GnuPG, and OpenPGP.</p>
+                <img src="/static/blog/pgp-vs-gpg-vs-openpgp-hero.webp" alt="Three interlocking gears representing the PGP product, the OpenPGP standard, and GnuPG software" width="1200" height="630" loading="lazy">
+                <div class="blog-card-body">
+                    <div>
+                        <div class="blog-card-meta">Standards &bull; 8 min read</div>
+                        <h2><a href="/blog/pgp-vs-gpg-vs-openpgp/">PGP vs GPG vs OpenPGP: What Is the Difference?</a></h2>
+                        <p>Clarify the history, RFC standards, and software implementations behind PGP, GnuPG, and OpenPGP.</p>
+                    </div>
+                    <a href="/blog/pgp-vs-gpg-vs-openpgp/" class="btn">Read Guide</a>
                 </div>
-                <a href="/blog/pgp-vs-gpg-vs-openpgp/" class="btn">Read Guide</a>
             </article>
             <article class="blog-card">
-                <div>
-                    <h2><a href="/blog/how-to-share-public-key-verify-fingerprints/">How to Share Your Public Key and Verify Fingerprints</a></h2>
-                    <p>Learn how to publish your public key safely and verify fingerprints out-of-band to stop impersonation.</p>
+                <img src="/static/blog/how-to-share-public-key-verify-fingerprints-hero.webp" alt="Two people comparing a glowing fingerprint icon, illustrating out-of-band PGP fingerprint verification" width="1200" height="630" loading="lazy">
+                <div class="blog-card-body">
+                    <div>
+                        <div class="blog-card-meta">Verification &bull; 8 min read</div>
+                        <h2><a href="/blog/how-to-share-public-key-verify-fingerprints/">How to Share Your Public Key and Verify Fingerprints</a></h2>
+                        <p>Learn how to publish your public key safely and verify fingerprints out-of-band to stop impersonation.</p>
+                    </div>
+                    <a href="/blog/how-to-share-public-key-verify-fingerprints/" class="btn">Read Guide</a>
                 </div>
-                <a href="/blog/how-to-share-public-key-verify-fingerprints/" class="btn">Read Guide</a>
             </article>
             <article class="blog-card">
-                <div>
-                    <h2><a href="/blog/common-pgp-mistakes/">Common PGP Mistakes (and How to Avoid Them)</a></h2>
-                    <p>From sharing private keys to skipping fingerprint checks—avoid the errors that break PGP security.</p>
+                <img src="/static/blog/common-pgp-mistakes-hero.webp" alt="A warning triangle on a shield beside a broken padlock, illustrating common PGP security mistakes" width="1200" height="630" loading="lazy">
+                <div class="blog-card-body">
+                    <div>
+                        <div class="blog-card-meta">Security &bull; 8 min read</div>
+                        <h2><a href="/blog/common-pgp-mistakes/">Common PGP Mistakes (and How to Avoid Them)</a></h2>
+                        <p>From sharing private keys to skipping fingerprint checks—avoid the errors that break PGP security.</p>
+                    </div>
+                    <a href="/blog/common-pgp-mistakes/" class="btn">Read Guide</a>
                 </div>
-                <a href="/blog/common-pgp-mistakes/" class="btn">Read Guide</a>
             </article>
             <article class="blog-card">
-                <div>
-                    <h2><a href="/blog/pgp-for-email/">PGP for Email: Thunderbird, Proton Mail, and Gmail</a></h2>
-                    <p>How to set up end-to-end encrypted email across popular desktop and webmail clients.</p>
+                <img src="/static/blog/pgp-for-email-hero.webp" alt="Encrypted envelopes moving between a laptop and a cloud, illustrating PGP-protected email" width="1200" height="630" loading="lazy">
+                <div class="blog-card-body">
+                    <div>
+                        <div class="blog-card-meta">Email &bull; 8 min read</div>
+                        <h2><a href="/blog/pgp-for-email/">PGP for Email: Thunderbird, Proton Mail, and Gmail</a></h2>
+                        <p>How to set up end-to-end encrypted email across popular desktop and webmail clients.</p>
+                    </div>
+                    <a href="/blog/pgp-for-email/" class="btn">Read Guide</a>
                 </div>
-                <a href="/blog/pgp-for-email/" class="btn">Read Guide</a>
             </article>
             <article class="blog-card">
-                <div>
-                    <h2><a href="/blog/is-online-pgp-safe/">Is Online PGP Safe? Client-Side Encryption Explained</a></h2>
-                    <p>When browser-based OpenPGP is safe, how to verify it, and when you should use offline GPG instead.</p>
+                <img src="/static/blog/is-online-pgp-safe-hero.webp" alt="A laptop inside a protective emerald dome, illustrating client-side browser cryptography" width="1200" height="630" loading="lazy">
+                <div class="blog-card-body">
+                    <div>
+                        <div class="blog-card-meta">Trust &amp; Safety &bull; 8 min read</div>
+                        <h2><a href="/blog/is-online-pgp-safe/">Is Online PGP Safe? Client-Side Encryption Explained</a></h2>
+                        <p>When browser-based OpenPGP is safe, how to verify it, and when you should use offline GPG instead.</p>
+                    </div>
+                    <a href="/blog/is-online-pgp-safe/" class="btn">Read Guide</a>
                 </div>
-                <a href="/blog/is-online-pgp-safe/" class="btn">Read Guide</a>
             </article>
         </div>
     </main>
@@ -136,9 +172,27 @@
             </ul>
         </div>
     </footer>
+    <nav class="mobile-tabbar" aria-label="Mobile navigation">
+        <a href="/" aria-label="Tool">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4"/></svg>
+            <span class="sr-only">Tool</span>
+        </a>
+        <a href="/blog/" aria-current="page" aria-label="Blog">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+            <span class="sr-only">Blog</span>
+        </a>
+        <a href="/about/" aria-label="About">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+            <span class="sr-only">About</span>
+        </a>
+        <a href="/contact/" aria-label="Contact">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            <span class="sr-only">Contact</span>
+        </a>
+    </nav>
     <div id="consent-banner" class="consent-banner" role="dialog" aria-label="Cookie consent">
         <div class="consent-inner">
-            <p>We use cookies for Google Analytics and Google AdSense. Your PGP keys and messages are always processed locally in your browser. See our <a href="/privacy/" style="color:#6ee7b7;">Privacy Policy</a>.</p>
+            <p>We use cookies for Google Analytics and Google AdSense. Your PGP keys and messages are always processed locally in your browser. See our <a href="/privacy/">Privacy Policy</a>.</p>
             <div class="consent-actions">
                 <button type="button" id="consent-reject" class="consent-reject">Reject</button>
                 <button type="button" id="consent-accept">Accept</button>

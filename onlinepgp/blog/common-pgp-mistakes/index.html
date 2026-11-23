@@ -3,10 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#0b1118">
     <meta name="google-adsense-account" content="ca-pub-7594412359714045">
     <title>Common PGP Mistakes (and How to Avoid Them) - OnlinePGP.com</title>
     <meta name="description" content="Avoid the 10 most common PGP mistakes, including leaking private keys, weak passphrases, unencrypted subjects, and trusting short key IDs.">
     <link rel="canonical" href="https://onlinepgp.com/blog/common-pgp-mistakes/">
+    <link rel="manifest" href="/manifest.webmanifest">
+    <link rel="apple-touch-icon" href="/static/favicon.png">
     <meta property="og:type" content="article">
     <meta property="og:title" content="Common PGP Mistakes (and How to Avoid Them)">
     <meta property="og:description" content="Avoid the 10 most common PGP mistakes, including leaking private keys, weak passphrases, unencrypted subjects, and trusting short key IDs.">
@@ -17,7 +20,7 @@
     <meta name="twitter:description" content="Avoid the 10 most common PGP mistakes, including leaking private keys, weak passphrases, unencrypted subjects, and trusting short key IDs.">
     <meta name="twitter:image" content="https://onlinepgp.com/static/blog/common-pgp-mistakes-hero.webp">
     <link rel="icon" href="/static/favicon.png" type="image/png">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;600;700&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=JetBrains+Mono:wght@400;600&display=swap">
     <link rel="stylesheet" href="/asset/styles.css">
     <script>
         window.dataLayer = window.dataLayer || [];
@@ -101,7 +104,7 @@
 <body>
     <header class="site-header">
         <div class="header-inner">
-            <a href="/" class="brand"><img src="/static/logo.webp" alt="OnlinePGP Logo" width="36" height="36"><span>OnlinePGP</span></a>
+            <a href="/" class="brand"><img src="/static/logo.webp" alt="OnlinePGP Logo" width="34" height="34"><span>OnlinePGP</span></a>
             <nav aria-label="Main navigation">
                 <ul class="nav-links">
                     <li><a href="/">Tool</a></li>
@@ -112,32 +115,53 @@
             </nav>
         </div>
     </header>
-    <main class="container">
-        <article class="card">
-            <div class="breadcrumbs"><a href="/">Home</a> &rsaquo; <a href="/blog/">Blog</a> &rsaquo; Common PGP Mistakes (and How to Avoid Them)</div>
-            <h1>Common PGP Mistakes (and How to Avoid Them)</h1>
-            <div class="article-meta">By <strong>OnlinePGP Editorial Team</strong> &bull; Published <time datetime="2026-11-23">November 23, 2026</time></div>
-            <div class="img-placeholder">
-                <img src="/static/blog/common-pgp-mistakes-hero.webp" alt="A warning triangle on a shield beside a broken padlock, illustrating common PGP security mistakes" width="1200" height="630" loading="lazy" onerror="this.style.display='none'">
-            </div>
-            <h2>1. Sharing Your Private Key Instead of Your Public Key</h2><p><strong>Why it hurts:</strong> Anyone who obtains your private key can decrypt your messages and sign statements in your name. <strong>How to avoid it:</strong> Only share <code>publicKey.txt</code>. Keep <code>privateKey.txt</code> strictly private.</p>
-<h2>2. Using a Weak or Reused Passphrase</h2><p><strong>Why it hurts:</strong> If your private key file is stolen, a weak passphrase can be cracked offline. <strong>How to avoid it:</strong> Use a unique, high-entropy passphrase stored in a password manager.</p>
-<div class="img-placeholder"><img src="/static/blog/common-pgp-mistakes-1.webp" alt="A locked envelope with a visible header area, illustrating that PGP does not hide email subject lines by default" width="900" height="500" loading="lazy" onerror="this.style.display='none'"></div>
-<h2>3. Having No Backup (and No Revocation Certificate)</h2><p><strong>Why it hurts:</strong> There is no password reset in PGP. Losing your key locks you out of past encrypted mail forever. <strong>How to avoid it:</strong> Back up your private key in an encrypted volume or offline USB, and generate a revocation certificate in GnuPG while you still control the key.</p>
-<h2>4. Assuming Email Subject Lines and Headers Are Encrypted</h2><p><strong>Why it hurts:</strong> Classic inline PGP—such as pasting a block from <a href='/'>OnlinePGP.com</a> into webmail—only encrypts the message body. The Subject, To, From, and Date headers remain visible to mail servers. Even when using PGP/MIME, headers are exposed unless both clients support and enable modern header protection. <strong>How to avoid it:</strong> Keep subject lines generic.</p>
-<h2>5. Skipping Fingerprint Verification</h2><p><strong>Why it hurts:</strong> Accepting an unverified public key leaves you open to impersonation. <strong>How to avoid it:</strong> Verify fingerprints out-of-band as explained in our <a href='/blog/how-to-share-public-key-verify-fingerprints/'>fingerprint verification guide</a>.</p>
-<h2>6. Trusting Short Key IDs Instead of Full Fingerprints</h2><p><strong>Why it hurts:</strong> 8-character short key IDs can be collided intentionally. <strong>How to avoid it:</strong> Always check the full fingerprint.</p>
-<h2>7. Encrypting to an Old, Expired, or Revoked Key</h2><p><strong>Why it hurts:</strong> Your recipient may no longer have access to an old key. <strong>How to avoid it:</strong> Confirm you are using their current key before encrypting.</p>
-<h2>8. Letting HTML Email or Chat Apps Corrupt the Armor Block</h2><p><strong>Why it hurts:</strong> Extra line breaks, smart quotes, or missing hyphens break decryption. <strong>How to avoid it:</strong> Send PGP blocks in plain-text mode.</p>
-<h2>9. Screenshotting or Emailing Your Private Key as a Backup</h2><p><strong>Why it hurts:</strong> Cloud photo backups and mail servers expose your key to third parties. <strong>How to avoid it:</strong> Use encrypted local or hardware backups.</p>
-<h2>10. Expecting PGP to Hide Who You Are Talking To</h2><p><strong>Why it hurts:</strong> PGP protects message content, not network metadata. Mail providers still see sender and recipient addresses. <strong>How to avoid it:</strong> Combine PGP with appropriate operational security when metadata matters, and read <a href='/blog/how-to-generate-pgp-key/'>How to Generate a PGP Key Safely</a> and <a href='/blog/pgp-for-email/'>PGP for Email</a>.</p>
-<h2>Frequently Asked Questions</h2><h3>Does PGP encrypt email subject lines?</h3><p>Classic inline PGP and basic PGP/MIME encrypt the message body and attachments, not the Subject, From, To, or Date headers. Only modern clients with header protection enabled hide subjects.</p><h3>Can I recover a lost private key?</h3><p>No. If you lose your private key and have no backup, any messages encrypted to it are permanently unreadable.</p><h3>Is it safe to email my private key to myself as a backup?</h3><p>No. Never send your private key over unencrypted email or store it in plaintext cloud storage.</p><h3>Why shouldn&#x27;t I use 8-character short key IDs?</h3><p>32-bit short key IDs are collision-prone and can be spoofed. Always verify the full 40-character (v4) or 64-character (v6) fingerprint.</p>
-            <div class="cta-box">
-                <h3>Try It Now with OnlinePGP.com</h3>
-                <p>Put this guide into practice right away. Generate a PGP key pair, encrypt a message, or verify a signature 100% locally in your browser.</p>
-                <a href="/" class="btn">Open the Online PGP Tool</a>
-            </div>
-        </article>
+    <main class="container" style="margin-top: 2rem;">
+        <div class="breadcrumbs"><a href="/">Home</a> &rsaquo; <a href="/blog/">Blog</a> &rsaquo; Common PGP Mistakes (and How to Avoid Them)</div>
+        <div class="article-layout">
+            <aside>
+                <details class="toc-box" open>
+                    <summary>Table of Contents</summary>
+                    <ul>
+                        <li><a href="#1-sharing-your-private-key-instead-of-your-public-key">1. Sharing Your Private Key Instead of Your Public Key</a></li>
+                        <li><a href="#2-using-a-weak-or-reused-passphrase">2. Using a Weak or Reused Passphrase</a></li>
+                        <li><a href="#3-having-no-backup-and-no-revocation-certificate">3. Having No Backup (and No Revocation Certificate)</a></li>
+                        <li><a href="#4-assuming-email-subject-lines-and-headers-are-encrypted">4. Assuming Email Subject Lines and Headers Are Encrypted</a></li>
+                        <li><a href="#5-skipping-fingerprint-verification">5. Skipping Fingerprint Verification</a></li>
+                        <li><a href="#6-trusting-short-key-ids-instead-of-full-fingerprints">6. Trusting Short Key IDs Instead of Full Fingerprints</a></li>
+                        <li><a href="#7-encrypting-to-an-old-expired-or-revoked-key">7. Encrypting to an Old, Expired, or Revoked Key</a></li>
+                        <li><a href="#8-letting-html-email-or-chat-apps-corrupt-the-armor-block">8. Letting HTML Email or Chat Apps Corrupt the Armor Block</a></li>
+                        <li><a href="#9-screenshotting-or-emailing-your-private-key-as-a-backup">9. Screenshotting or Emailing Your Private Key as a Backup</a></li>
+                        <li><a href="#10-expecting-pgp-to-hide-who-you-are-talking-to">10. Expecting PGP to Hide Who You Are Talking To</a></li>
+                        <li><a href="#faq">Frequently Asked Questions</a></li>
+                    </ul>
+                </details>
+            </aside>
+            <article class="card article-content">
+                <h1>Common PGP Mistakes (and How to Avoid Them)</h1>
+                <div class="article-meta">By <strong>OnlinePGP Editorial Team</strong> &bull; Published <time datetime="2026-11-23">November 23, 2026</time> &bull; 4 min read</div>
+                <img class="article-hero-img" src="/static/blog/common-pgp-mistakes-hero.webp" alt="A warning triangle on a shield beside a broken padlock, illustrating common PGP security mistakes" width="1200" height="630" loading="lazy">
+                <h2 id="1-sharing-your-private-key-instead-of-your-public-key">1. Sharing Your Private Key Instead of Your Public Key</h2><p><strong>Why it hurts:</strong> Anyone who obtains your private key can decrypt your messages and sign statements in your name. <strong>How to avoid it:</strong> Only share <code>publicKey.txt</code>. Keep <code>privateKey.txt</code> strictly private.</p>
+<h2 id="2-using-a-weak-or-reused-passphrase">2. Using a Weak or Reused Passphrase</h2><p><strong>Why it hurts:</strong> If your private key file is stolen, a weak passphrase can be cracked offline. <strong>How to avoid it:</strong> Use a unique, high-entropy passphrase stored in a password manager.</p>
+<img class="article-mid-img" src="/static/blog/common-pgp-mistakes-1.webp" alt="A locked envelope with a visible header area, illustrating that PGP does not hide email subject lines by default" width="900" height="500" loading="lazy">
+<h2 id="3-having-no-backup-and-no-revocation-certificate">3. Having No Backup (and No Revocation Certificate)</h2><p><strong>Why it hurts:</strong> There is no password reset in PGP. Losing your key locks you out of past encrypted mail forever. <strong>How to avoid it:</strong> Back up your private key in an encrypted volume or offline USB, and generate a revocation certificate in GnuPG while you still control the key.</p>
+<h2 id="4-assuming-email-subject-lines-and-headers-are-encrypted">4. Assuming Email Subject Lines and Headers Are Encrypted</h2><p><strong>Why it hurts:</strong> Classic inline PGP—such as pasting a block from <a href='/'>OnlinePGP.com</a> into webmail—only encrypts the message body. The Subject, To, From, and Date headers remain visible to mail servers. Even when using PGP/MIME, headers are exposed unless both clients support and enable modern header protection. <strong>How to avoid it:</strong> Keep subject lines generic.</p>
+<h2 id="5-skipping-fingerprint-verification">5. Skipping Fingerprint Verification</h2><p><strong>Why it hurts:</strong> Accepting an unverified public key leaves you open to impersonation. <strong>How to avoid it:</strong> Verify fingerprints out-of-band as explained in our <a href='/blog/how-to-share-public-key-verify-fingerprints/'>fingerprint verification guide</a>.</p>
+<h2 id="6-trusting-short-key-ids-instead-of-full-fingerprints">6. Trusting Short Key IDs Instead of Full Fingerprints</h2><p><strong>Why it hurts:</strong> 8-character short key IDs can be collided intentionally. <strong>How to avoid it:</strong> Always check the full fingerprint.</p>
+<h2 id="7-encrypting-to-an-old-expired-or-revoked-key">7. Encrypting to an Old, Expired, or Revoked Key</h2><p><strong>Why it hurts:</strong> Your recipient may no longer have access to an old key. <strong>How to avoid it:</strong> Confirm you are using their current key before encrypting.</p>
+<h2 id="8-letting-html-email-or-chat-apps-corrupt-the-armor-block">8. Letting HTML Email or Chat Apps Corrupt the Armor Block</h2><p><strong>Why it hurts:</strong> Extra line breaks, smart quotes, or missing hyphens break decryption. <strong>How to avoid it:</strong> Send PGP blocks in plain-text mode.</p>
+<h2 id="9-screenshotting-or-emailing-your-private-key-as-a-backup">9. Screenshotting or Emailing Your Private Key as a Backup</h2><p><strong>Why it hurts:</strong> Cloud photo backups and mail servers expose your key to third parties. <strong>How to avoid it:</strong> Use encrypted local or hardware backups.</p>
+<h2 id="10-expecting-pgp-to-hide-who-you-are-talking-to">10. Expecting PGP to Hide Who You Are Talking To</h2><p><strong>Why it hurts:</strong> PGP protects message content, not network metadata. Mail providers still see sender and recipient addresses. <strong>How to avoid it:</strong> Combine PGP with appropriate operational security when metadata matters, and read <a href='/blog/how-to-generate-pgp-key/'>How to Generate a PGP Key Safely</a> and <a href='/blog/pgp-for-email/'>PGP for Email</a>.</p>
+<h2 id="faq">Frequently Asked Questions</h2><h3>Does PGP encrypt email subject lines?</h3><p>Classic inline PGP and basic PGP/MIME encrypt the message body and attachments, not the Subject, From, To, or Date headers. Only modern clients with header protection enabled hide subjects.</p><h3>Can I recover a lost private key?</h3><p>No. If you lose your private key and have no backup, any messages encrypted to it are permanently unreadable.</p><h3>Is it safe to email my private key to myself as a backup?</h3><p>No. Never send your private key over unencrypted email or store it in plaintext cloud storage.</p><h3>Why shouldn&#x27;t I use 8-character short key IDs?</h3><p>32-bit short key IDs are collision-prone and can be spoofed. Always verify the full 40-character (v4) or 64-character (v6) fingerprint.</p>
+                <div class="cta-box">
+                    <h3>Try It Now with OnlinePGP.com</h3>
+                    <p>Put this guide into practice right away. Generate a PGP key pair, encrypt a message, or verify a signature 100% locally in your browser.</p>
+                    <a href="/" class="btn">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                        Open the Online PGP Tool
+                    </a>
+                </div>
+            </article>
+        </div>
     </main>
     <footer class="site-footer">
         <div class="footer-inner">
@@ -151,9 +175,27 @@
             </ul>
         </div>
     </footer>
+    <nav class="mobile-tabbar" aria-label="Mobile navigation">
+        <a href="/" aria-label="Tool">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4"/></svg>
+            <span class="sr-only">Tool</span>
+        </a>
+        <a href="/blog/" aria-current="page" aria-label="Blog">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+            <span class="sr-only">Blog</span>
+        </a>
+        <a href="/about/" aria-label="About">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+            <span class="sr-only">About</span>
+        </a>
+        <a href="/contact/" aria-label="Contact">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            <span class="sr-only">Contact</span>
+        </a>
+    </nav>
     <div id="consent-banner" class="consent-banner" role="dialog" aria-label="Cookie consent">
         <div class="consent-inner">
-            <p>We use cookies for Google Analytics and Google AdSense. Your PGP keys and messages are always processed locally in your browser. See our <a href="/privacy/" style="color:#6ee7b7;">Privacy Policy</a>.</p>
+            <p>We use cookies for Google Analytics and Google AdSense. Your PGP keys and messages are always processed locally in your browser. See our <a href="/privacy/">Privacy Policy</a>.</p>
             <div class="consent-actions">
                 <button type="button" id="consent-reject" class="consent-reject">Reject</button>
                 <button type="button" id="consent-accept">Accept</button>
