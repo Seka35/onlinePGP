@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-adsense-account" content="ca-pub-7594412359714045">
+    <title>Is Online PGP Safe? Client-Side Encryption Explained - OnlinePGP.com</title>
+    <meta name="description" content="Understand how client-side browser PGP works, how to verify that your keys never leave your device, and when you should use offline GnuPG instead.">
+    <link rel="canonical" href="https://onlinepgp.com/blog/is-online-pgp-safe/">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Is Online PGP Safe? Client-Side Encryption Explained">
+    <meta property="og:description" content="Understand how client-side browser PGP works, how to verify that your keys never leave your device, and when you should use offline GnuPG instead.">
+    <meta property="og:url" content="https://onlinepgp.com/blog/is-online-pgp-safe/">
+    <meta property="og:image" content="https://onlinepgp.com/static/blog/is-online-pgp-safe-hero.webp">
+    <link rel="icon" href="/static/favicon.png" type="image/png">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;600;700&display=swap">
+    <link rel="stylesheet" href="/asset/styles.css">
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        /* TODO: Enable Google's certified CMP (Privacy & messaging) in Google AdSense for EEA/UK traffic. */
+        gtag('consent', 'default', {
+            ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied', analytics_storage: 'denied',
+            region: ['AT','BE','BG','HR','CY','CZ','DK','EE','FI','FR','DE','GR','HU','IE','IT','LV','LT','LU','MT','NL','PL','PT','RO','SK','SI','ES','SE','IS','LI','NO','GB','CH']
+        });
+        gtag('consent', 'default', { ad_storage: 'granted', ad_user_data: 'granted', ad_personalization: 'granted', analytics_storage: 'granted' });
+    </script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-697PK9P2V4"></script>
+    <script>gtag('js', new Date()); gtag('config', 'G-697PK9P2V4');</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7594412359714045" crossorigin="anonymous"></script>
+    <script src="/asset/consent.js" defer></script>
+    <script type="application/ld+json">
+{
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "Is Online PGP Safe? Client-Side Encryption Explained",
+        "description": "Understand how client-side browser PGP works, how to verify that your keys never leave your device, and when you should use offline GnuPG instead.",
+        "author": {
+                "@type": "Organization",
+                "name": "OnlinePGP Editorial Team"
+        },
+        "publisher": {
+                "@type": "Organization",
+                "name": "OnlinePGP.com"
+        },
+        "datePublished": "2026-11-23",
+        "dateModified": "2026-11-23",
+        "mainEntityOfPage": "https://onlinepgp.com/blog/is-online-pgp-safe/"
+}
+    </script>
+    <script type="application/ld+json">
+{
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+                {
+                        "@type": "Question",
+                        "name": "Does OnlinePGP.com send my keys to a server?",
+                        "acceptedAnswer": {
+                                "@type": "Answer",
+                                "text": "No. All cryptographic operations run locally in your browser using OpenPGP.js. Your keys and messages never leave your device."
+                        }
+                },
+                {
+                        "@type": "Question",
+                        "name": "How can I verify that an online PGP tool is client-side?",
+                        "acceptedAnswer": {
+                                "@type": "Answer",
+                                "text": "You can open your browser's Developer Tools (Network tab) while generating or encrypting a key to confirm zero network requests are sent with your data."
+                        }
+                },
+                {
+                        "@type": "Question",
+                        "name": "When should I use offline GPG instead of an online tool?",
+                        "acceptedAnswer": {
+                                "@type": "Answer",
+                                "text": "For high-risk threat models, journalists in hostile environments, or long-term master keys, an offline, air-gapped GPG setup is recommended."
+                        }
+                }
+        ]
+}
+    </script>
+</head>
+<body>
+    <header class="site-header">
+        <div class="header-inner">
+            <a href="/" class="brand"><img src="/static/logo.webp" alt="OnlinePGP Logo" width="36" height="36"><span>OnlinePGP</span></a>
+            <nav aria-label="Main navigation">
+                <ul class="nav-links">
+                    <li><a href="/">Tool</a></li>
+                    <li><a href="/blog/" aria-current="page">Blog</a></li>
+                    <li><a href="/about/">About</a></li>
+                    <li><a href="/contact/">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <main class="container">
+        <article class="card">
+            <div class="breadcrumbs"><a href="/">Home</a> &rsaquo; <a href="/blog/">Blog</a> &rsaquo; Is Online PGP Safe? Client-Side Encryption Explained</div>
+            <h1>Is Online PGP Safe? Client-Side Encryption Explained</h1>
+            <div class="article-meta">By <strong>OnlinePGP Editorial Team</strong> &bull; Published <time datetime="2026-11-23">November 23, 2026</time></div>
+            <div class="img-placeholder">
+                <img src="/static/blog/is-online-pgp-safe-hero.webp" alt="Flat illustration of a browser padlock showing local client-side cryptography" width="1200" height="630" loading="lazy" onerror="this.style.display='none'">
+                <span>Illustration: Flat illustration of a browser padlock showing local client-side cryptography</span>
+            </div>
+            <h2>The Honest Answer: It Depends on Your Threat Model</h2><p>Security professionals often debate whether web-based PGP tools are safe. The honest answer is nuanced: a well-built, 100% client-side tool like <a href='/'>OnlinePGP.com</a> is safe for everyday privacy, learning, and convenience—provided you understand how it works and when to step up to offline tools.</p>
+<h2>How Client-Side Encryption Works</h2><p>When you load OnlinePGP.com, your browser downloads static HTML and the open-source <code>openpgp.min.js</code> library. Once loaded, all key generation, encryption, decryption, and signing happen inside your browser's JavaScript engine. You can even disconnect from the internet after loading the page and the tool will still work.</p>
+<div class="img-placeholder"><img src="/static/blog/is-online-pgp-safe-1.webp" alt="Is Online PGP Safe? Client-Side Encryption Explained diagram" width="900" height="500" loading="lazy" onerror="this.style.display='none'"><span>Illustration: Is Online PGP Safe? Client-Side Encryption Explained diagram</span></div>
+<h2>How to Verify It Yourself</h2><p>Don't take any website's word on faith. Open your browser's Developer Tools (<code>F12</code>), switch to the <strong>Network</strong> tab, and click <em>Generate New PGP Keys Pair</em>. You will see that zero requests are made to any server during key generation, encryption, or decryption. You can also audit the full source code on <a href='https://github.com/Seka35/onlinePGP' target='_blank' rel='noopener noreferrer'>GitHub</a>.</p>
+<h2>When to Use Offline GnuPG Instead</h2><p>Any website—even a static one—depends on the security of your browser, your operating system, and any browser extensions you have installed. If you are protecting life-critical secrets, managing high-value cryptocurrency keys, or operating under a targeted nation-state threat model, use an offline, air-gapped computer running GnuPG.</p>
+
+<div class="recommended-box">
+    <h3>Recommended Privacy Tools</h3>
+    <p>Pair PGP with strong everyday privacy habits:</p>
+    <ul>
+        <li><a href="#TODO-affiliate-protonmail" rel="sponsored nofollow">Proton Mail</a> &mdash; Encrypted email with built-in OpenPGP support.</li>
+        <li><a href="#TODO-affiliate-nordvpn" rel="sponsored nofollow">NordVPN</a> &mdash; Encrypts your network traffic on public Wi-Fi.</li>
+        <li><a href="#TODO-affiliate-password-manager" rel="sponsored nofollow">Bitwarden / 1Password</a> &mdash; Store strong, unique PGP passphrases safely.</li>
+    </ul>
+</div>
+
+<h2>Frequently Asked Questions</h2><h3>Does OnlinePGP.com send my keys to a server?</h3><p>No. All cryptographic operations run locally in your browser using OpenPGP.js. Your keys and messages never leave your device.</p><h3>How can I verify that an online PGP tool is client-side?</h3><p>You can open your browser&#x27;s Developer Tools (Network tab) while generating or encrypting a key to confirm zero network requests are sent with your data.</p><h3>When should I use offline GPG instead of an online tool?</h3><p>For high-risk threat models, journalists in hostile environments, or long-term master keys, an offline, air-gapped GPG setup is recommended.</p>
+            <div class="cta-box">
+                <h3>Try It Now with OnlinePGP.com</h3>
+                <p>Put this guide into practice right away. Generate a PGP key pair, encrypt a message, or verify a signature 100% locally in your browser.</p>
+                <a href="/" class="btn">Open the Online PGP Tool</a>
+            </div>
+        </article>
+    </main>
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <p>&copy; 2026 OnlinePGP.com &mdash; Client-Side OpenPGP Tool.</p>
+            <ul class="footer-links">
+                <li><a href="/privacy/">Privacy</a></li>
+                <li><a href="/terms/">Terms</a></li>
+                <li><a href="/disclaimer/">Disclaimer</a></li>
+                <li><a href="/about/">About</a></li>
+                <li><a href="/contact/">Contact</a></li>
+            </ul>
+        </div>
+    </footer>
+    <div id="consent-banner" class="consent-banner" role="dialog" aria-label="Cookie consent">
+        <div class="consent-inner">
+            <p>We use cookies for Google Analytics and Google AdSense. Your PGP keys and messages are always processed locally in your browser. See our <a href="/privacy/" style="color:#6ee7b7;">Privacy Policy</a>.</p>
+            <div class="consent-actions">
+                <button type="button" id="consent-reject" class="consent-reject">Reject</button>
+                <button type="button" id="consent-accept">Accept</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

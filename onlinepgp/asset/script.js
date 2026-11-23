@@ -2,7 +2,7 @@ function toggleSection(sectionId) {
     const sections = document.querySelectorAll('.section-content');
     sections.forEach(section => {
         if (section.id !== sectionId) {
-            section.style.display = 'none'; 
+            section.style.display = 'none';
         }
     });
     const selectedSection = document.getElementById(sectionId);
@@ -73,7 +73,7 @@ async function verifyMessage() {
 
     if (valid) {
         verificationResult.style.color = 'green';
-        const userIds = publicKeyObject.getUserIds(); 
+        const userIds = publicKeyObject.getUserIds();
         verificationResult.innerText = `Signed by ${userIds.join(', ')} \n Signature is valid.`;
     } else {
         verificationResult.style.color = 'red';
@@ -88,7 +88,7 @@ async function generateKeys() {
 
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) {
-        alert("Veuillez entrer une adresse e-mail valide.");
+        alert("Please enter a valid email address.");
         return;
     }
 
@@ -114,13 +114,13 @@ function showCopyMessage(message) {
     const messageElement = document.createElement('div');
     messageElement.textContent = message;
     messageElement.style.position = 'fixed';
-    messageElement.style.bottom = '20px'; 
+    messageElement.style.bottom = '20px';
     messageElement.style.right = '20px';
-    messageElement.style.backgroundColor = 'rgba(0, 0, 0, 0.7)'; 
+    messageElement.style.backgroundColor = 'rgba(15, 23, 42, 0.9)';
     messageElement.style.color = 'white';
-    messageElement.style.padding = '10px';
-    messageElement.style.borderRadius = '5px';
-    messageElement.style.zIndex = '1000'; 
+    messageElement.style.padding = '10px 16px';
+    messageElement.style.borderRadius = '6px';
+    messageElement.style.zIndex = '1000';
 
     document.body.appendChild(messageElement);
 
@@ -162,7 +162,7 @@ function importKey(elementId) {
 
 document.addEventListener("DOMContentLoaded", function() {
     const sections = document.querySelectorAll(".section-content");
-    for(let section of sections) {
+    for (let section of sections) {
         section.style.display = 'none';
     }
 });
