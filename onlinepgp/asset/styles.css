@@ -668,3 +668,38 @@ input[type="range"], input[type="checkbox"] { accent-color: #10b981; }
     border: 1px solid var(--border-accent);
 }
 .tool-hero-icon { width: 72px; height: 72px; margin: 0 auto 0.75rem; display: block; object-fit: contain; }
+
+/* Responsive Tool Tabs: Desktop 5 equal pills, Mobile 5-column icon+label grid */
+.tool-tabs {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow: visible;
+    -webkit-mask-image: none;
+    mask-image: none;
+}
+.tab-btn { flex: 1 1 0; justify-content: center; }
+.tab-icon, .tab-label-mobile { display: none; }
+
+@media (max-width: 767px) {
+    .tool-tabs {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 0.25rem;
+        padding: 0.3rem;
+    }
+    .tab-btn {
+        flex-direction: column;
+        padding: 0.45rem 0.2rem;
+        min-height: 52px;
+        font-size: 11px;
+        gap: 0.25rem;
+        white-space: nowrap;
+    }
+    .tab-icon { display: block; width: 24px; height: 24px; }
+    .tab-label-desktop { display: none; }
+    .tab-label-mobile { display: block; line-height: 1.1; }
+    .tab-btn.active {
+        background: rgba(16, 185, 129, 0.16);
+        color: var(--accent-bright);
+    }
+}
