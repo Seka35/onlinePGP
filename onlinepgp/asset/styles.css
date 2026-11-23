@@ -557,7 +557,7 @@ code {
 .nav-dropdown-toggle:hover { color: var(--accent-bright); filter: none; }
 .mega-menu {
     position: absolute;
-    top: calc(100% + 10px);
+    top: 100%;
     left: 50%;
     transform: translateX(-50%) translateY(6px);
     width: min(640px, 90vw);
@@ -573,14 +573,25 @@ code {
     opacity: 0;
     visibility: hidden;
     pointer-events: none;
-    transition: opacity 0.18s ease, transform 0.18s ease, visibility 0.18s;
+    transition: opacity 0.18s ease 0.2s, transform 0.18s ease 0.2s, visibility 0.18s 0.2s;
     z-index: 300;
 }
+.mega-menu::before {
+    content: "";
+    position: absolute;
+    top: -12px;
+    left: 0;
+    right: 0;
+    height: 12px;
+}
+.nav-dropdown:hover .mega-menu,
+.nav-dropdown:focus-within .mega-menu,
 .nav-dropdown.open .mega-menu {
     opacity: 1;
     visibility: visible;
     pointer-events: auto;
     transform: translateX(-50%) translateY(0);
+    transition-delay: 0s;
 }
 .mega-item {
     display: flex;
