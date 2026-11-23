@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How OnlinePGP Works - Animated Demo</title>
+<style>
+  :root {
+    --bg: #0b1118;
+    --card: #111a24;
+    --input: #0d151e;
+    --border: rgba(255,255,255,0.1);
+    --text: #f1f5f9;
+    --muted: #94a3b8;
+    --accent: #10b981;
+    --bright: #34d399;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    padding: 0.75rem;
+    background: transparent;
+    color: var(--text);
+    font-family: system-ui, -apple-system, sans-serif;
+  }
+  .demo-frame {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+    transform: scale(0.98);
+    transform-origin: top center;
+  }
+  .demo-topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.6rem 0.9rem;
+    background: rgba(11,17,24,0.9);
+    border-bottom: 1px solid var(--border);
+    gap: 0.5rem;
+  }
+  .demo-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--bright);
+    background: rgba(16,185,129,0.14);
+    border: 1px solid rgba(16,185,129,0.4);
+    padding: 0.2rem 0.6rem;
+    border-radius: 999px;
+  }
+  .demo-controls { display: flex; gap: 0.4rem; }
+  .demo-controls button {
+    background: var(--input);
+    color: var(--text);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 0.3rem 0.65rem;
+    font-size: 0.78rem;
+    font-weight: 600;
+    cursor: pointer;
+    min-height: 32px;
+  }
+  .demo-controls button:hover { border-color: var(--accent); color: var(--bright); }
+  .demo-steps {
+    display: flex;
+    gap: 0.4rem;
+    padding: 0.65rem 0.9rem 0;
+    flex-wrap: wrap;
+  }
+  .step-chip {
+    background: var(--input);
+    color: var(--muted);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    padding: 0.28rem 0.7rem;
+    font-size: 0.78rem;
+    font-weight: 600;
+    cursor: pointer;
+  }
+  .step-chip.active {
+    background: rgba(16,185,129,0.16);
+    color: var(--bright);
+    border-color: rgba(16,185,129,0.5);
+  }
+  .demo-screen {
+    padding: 0.9rem;
+    user-select: none;
+    pointer-events: none;
+  }
+  .fake-field {
+    background: var(--input);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 0.65rem 0.85rem;
+    font-family: ui-monospace, monospace;
+    font-size: 0.78rem;
+    color: var(--muted);
+    margin-bottom: 0.6rem;
+    min-height: 38px;
+    white-space: pre-wrap;
+    word-break: break-all;
+  }
+  .fake-field.highlight { border-color: rgba(16,185,129,0.5); color: var(--text); }
+  .fake-btn {
+    display: inline-block;
+    background: linear-gradient(135deg, #10b981, #34d399);
+    color: #052218;
+    font-weight: 700;
+    font-size: 0.78rem;
+    padding: 0.45rem 0.9rem;
+    border-radius: 8px;
+    margin-bottom: 0.6rem;
+  }
+</style>
+</head>
+<body>
+<div class="demo-frame">
+  <div class="demo-topbar">
+    <span class="demo-badge">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+      Animated demo
+    </span>
+    <div class="demo-controls">
+      <button type="button" id="btnToggle" aria-label="Pause animation">Pause</button>
+      <button type="button" id="btnReplay" aria-label="Replay animation">Replay</button>
+    </div>
+  </div>
+  <div class="demo-steps" role="tablist" aria-label="Demo steps">
+    <button type="button" class="step-chip active" data-step="0" aria-label="Step 1: Generate Keys">1. Generate Keys</button>
+    <button type="button" class="step-chip" data-step="1" aria-label="Step 2: Encrypt">2. Encrypt</button>
+    <button type="button" class="step-chip" data-step="2" aria-label="Step 3: Decrypt">3. Decrypt</button>
+  </div>
+  <div class="demo-screen" aria-hidden="true">
+    <div id="demoField1" class="fake-field highlight"></div>
+    <div id="demoBtn" class="fake-btn"></div>
+    <div id="demoField2" class="fake-field"></div>
+  </div>
+</div>
+<script>
+(function () {
+  const steps = [
+    { f1: 'Alice <alice@example.com> • Passphrase: ••••••••', btn: 'GENERATE NEW PGP KEYS PAIR', f2: '-----BEGIN PGP PUBLIC KEY BLOCK-----\nmQENBF... (2048-bit RSA generated locally)' },
+    { f1: 'Message: "Meet at 15:00" + Recipient Public Key', btn: 'ENCRYPT TEXT', f2: '-----BEGIN PGP MESSAGE-----\nhQEMA2... (Encrypted locally in browser)' },
+    { f1: 'Private Key + Passphrase + PGP Message', btn: 'DECRYPT TEXT', f2: 'Decrypted plaintext: "Meet at 15:00"' }
+  ];
+  let idx = 0, paused = false, timer = null;
+  const f1 = document.getElementById('demoField1');
+  const btn = document.getElementById('demoBtn');
+  const f2 = document.getElementById('demoField2');
+  const chips = document.querySelectorAll('.step-chip');
+  const toggleBtn = document.getElementById('btnToggle');
+
+  function render(i) {
+    idx = i;
+    f1.textContent = steps[i].f1;
+    btn.textContent = steps[i].btn;
+    f2.textContent = steps[i].f2;
+    chips.forEach((c, ci) => c.classList.toggle('active', ci === i));
+  }
+
+  function startLoop() {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    clearInterval(timer);
+    timer = setInterval(() => { if (!paused) render((idx + 1) % steps.length); }, 3000);
+  }
+
+  chips.forEach(c => c.addEventListener('click', () => render(parseInt(c.dataset.step, 10))));
+  toggleBtn.addEventListener('click', () => {
+    paused = !paused;
+    toggleBtn.textContent = paused ? 'Play' : 'Pause';
+    toggleBtn.setAttribute('aria-label', paused ? 'Play animation' : 'Pause animation');
+  });
+  document.getElementById('btnReplay').addEventListener('click', () => { paused = false; toggleBtn.textContent = 'Pause'; render(0); });
+
+  render(0);
+  if ('IntersectionObserver' in window) {
+    const obs = new IntersectionObserver(entries => {
+      if (entries[0].isIntersecting) { startLoop(); obs.disconnect(); }
+    });
+    obs.observe(document.querySelector('.demo-frame'));
+  } else {
+    startLoop();
+  }
+})();
+</script>
+</body>
+</html>
