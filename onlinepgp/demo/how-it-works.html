@@ -64,6 +64,7 @@ input::placeholder,textarea::placeholder{color:#5d6a77}
 .prog i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--g1),var(--g2));transition:width .4s}
 @media(max-width:560px){.body{padding:14px;min-height:620px}.tab{font-size:10.5px}.cap{flex-direction:column}}
 </style>
+<style>html,body{overflow:hidden;margin:0;}</style>
 </head>
 <body>
 <div class="wrap">
@@ -219,5 +220,6 @@ $('#pp').onclick=()=>{paused=!paused;$('#pp').innerHTML=paused?'&#9654;':'&#1007
 cursor.style.transform='translate(60px,30px)';
 play(0);
 </script>
+<script>const send=()=>parent.postMessage({type:"demoHeight",h:document.documentElement.scrollHeight},"*");new ResizeObserver(send).observe(document.body);window.addEventListener("load",send);</script>
 </body>
 </html>
