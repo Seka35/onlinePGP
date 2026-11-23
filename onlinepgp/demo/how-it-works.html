@@ -1,191 +1,223 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>How OnlinePGP Works - Animated Demo</title>
+    <meta name="robots" content="noindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>How to use OnlinePGP</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --bg: #0b1118;
-    --card: #111a24;
-    --input: #0d151e;
-    --border: rgba(255,255,255,0.1);
-    --text: #f1f5f9;
-    --muted: #94a3b8;
-    --accent: #10b981;
-    --bright: #34d399;
-  }
-  * { box-sizing: border-box; }
-  body {
-    margin: 0;
-    padding: 0.75rem;
-    background: transparent;
-    color: var(--text);
-    font-family: system-ui, -apple-system, sans-serif;
-  }
-  .demo-frame {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 16px;
-    overflow: hidden;
-    transform: scale(0.98);
-    transform-origin: top center;
-  }
-  .demo-topbar {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0.6rem 0.9rem;
-    background: rgba(11,17,24,0.9);
-    border-bottom: 1px solid var(--border);
-    gap: 0.5rem;
-  }
-  .demo-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.35rem;
-    font-size: 0.75rem;
-    font-weight: 700;
-    color: var(--bright);
-    background: rgba(16,185,129,0.14);
-    border: 1px solid rgba(16,185,129,0.4);
-    padding: 0.2rem 0.6rem;
-    border-radius: 999px;
-  }
-  .demo-controls { display: flex; gap: 0.4rem; }
-  .demo-controls button {
-    background: var(--input);
-    color: var(--text);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    padding: 0.3rem 0.65rem;
-    font-size: 0.78rem;
-    font-weight: 600;
-    cursor: pointer;
-    min-height: 32px;
-  }
-  .demo-controls button:hover { border-color: var(--accent); color: var(--bright); }
-  .demo-steps {
-    display: flex;
-    gap: 0.4rem;
-    padding: 0.65rem 0.9rem 0;
-    flex-wrap: wrap;
-  }
-  .step-chip {
-    background: var(--input);
-    color: var(--muted);
-    border: 1px solid var(--border);
-    border-radius: 999px;
-    padding: 0.28rem 0.7rem;
-    font-size: 0.78rem;
-    font-weight: 600;
-    cursor: pointer;
-  }
-  .step-chip.active {
-    background: rgba(16,185,129,0.16);
-    color: var(--bright);
-    border-color: rgba(16,185,129,0.5);
-  }
-  .demo-screen {
-    padding: 0.9rem;
-    user-select: none;
-    pointer-events: none;
-  }
-  .fake-field {
-    background: var(--input);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 0.65rem 0.85rem;
-    font-family: ui-monospace, monospace;
-    font-size: 0.78rem;
-    color: var(--muted);
-    margin-bottom: 0.6rem;
-    min-height: 38px;
-    white-space: pre-wrap;
-    word-break: break-all;
-  }
-  .fake-field.highlight { border-color: rgba(16,185,129,0.5); color: var(--text); }
-  .fake-btn {
-    display: inline-block;
-    background: linear-gradient(135deg, #10b981, #34d399);
-    color: #052218;
-    font-weight: 700;
-    font-size: 0.78rem;
-    padding: 0.45rem 0.9rem;
-    border-radius: 8px;
-    margin-bottom: 0.6rem;
-  }
+:root{color-scheme:dark;--bg:#0a0f14;--pn:#0f1720;--fld:#0b121a;--bd:#1f2a35;--tx:#e6edf3;--mu:#8b98a5;--g1:#10b981;--g2:#34d399;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:transparent;color:var(--tx);font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;-webkit-font-smoothing:antialiased}
+.wrap{max-width:860px;margin:0 auto;padding:28px 16px 40px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:700;font-size:17px}
+.brand i{width:26px;height:26px;border-radius:7px;background:linear-gradient(135deg,var(--g1),var(--g2));display:grid;place-items:center;font-style:normal;font-size:11px;color:#04231a;font-weight:800}
+h1{font-size:clamp(24px,4.6vw,38px);line-height:1.15;margin:22px 0 8px;text-align:center;letter-spacing:-.02em}
+.sub{text-align:center;color:var(--mu);margin:0 auto 22px;max-width:560px;font-size:15px;line-height:1.5}
+.chips{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin:0 0 20px}
+.chip{border:1px solid var(--bd);background:var(--pn);color:var(--mu);border-radius:999px;padding:8px 14px;font:600 13px Inter,sans-serif;cursor:pointer;transition:.2s}
+.chip:hover{color:var(--tx)}
+.chip.on{background:linear-gradient(90deg,var(--g1),var(--g2));color:#04231a;border-color:transparent}
+.stage{position:relative}
+.win{border:1px solid var(--bd);border-radius:20px;background:var(--pn);overflow:hidden}
+.bar{display:flex;align-items:center;gap:8px;padding:10px 14px;background:#0c131b;border-bottom:1px solid var(--bd)}
+.bar b{width:10px;height:10px;border-radius:50%;background:#26323e}
+.url{flex:1;margin-left:8px;background:var(--fld);border:1px solid var(--bd);border-radius:8px;padding:5px 12px;font-size:12px;color:var(--mu)}
+.url span{color:var(--g2)}
+.body{padding:22px;min-height:560px}
+.tabs{display:grid;grid-template-columns:repeat(5,1fr);gap:4px;border:1px solid var(--bd);border-radius:12px;padding:5px;margin-bottom:12px;background:var(--fld)}
+.tab{cursor:pointer;padding:9px 4px;border-radius:9px;text-align:center;font-size:12px;font-weight:600;color:var(--mu);transition:.25s}
+.tab.on{background:linear-gradient(90deg,var(--g1),var(--g2));color:#04231a}
+.panel{display:none;flex-direction:column;gap:9px}
+.panel.on{display:flex}
+.ok{display:none;border:1px solid var(--g1);background:rgba(16,185,129,.12);color:var(--g2);border-radius:10px;padding:11px 14px;font-size:12.5px;font-weight:600}
+.ok.on{display:block;animation:pop .35s ease}
+@keyframes pop{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
+input,textarea{width:100%;background:var(--fld);border:1px solid var(--bd);border-radius:12px;color:var(--tx);font:14px Inter,sans-serif;padding:12px 16px;pointer-events:none;resize:none;outline:0;transition:border-color .2s,box-shadow .2s}
+textarea{height:66px;font:10.5px/1.5 ui-monospace,Menlo,Consolas,monospace;overflow:hidden}
+input::placeholder,textarea::placeholder{color:#5d6a77}
+.hl{border-color:var(--g2)!important;box-shadow:0 0 0 3px rgba(52,211,153,.18)}
+.btn{border:1px solid var(--bd);background:var(--fld);border-radius:12px;padding:12px;text-align:center;font-size:12px;font-weight:700;text-transform:uppercase;transition:transform .15s}
+.btn.p{background:linear-gradient(90deg,var(--g1),var(--g2));color:#04231a;border-color:transparent}
+.btn.press{transform:scale(.97)}
+.res{border:1px solid var(--bd);border-radius:10px;padding:14px;text-align:center;font-size:13px;font-weight:600;white-space:pre-line;color:var(--tx);background:var(--fld)}
+.res.good{color:var(--g2)}
+.cur{position:absolute;left:0;top:0;width:24px;height:24px;pointer-events:none;z-index:5;transition:transform .8s cubic-bezier(.45,.05,.2,1);filter:drop-shadow(0 2px 4px rgba(0,0,0,.6))}
+.cur svg{display:block;transition:transform .12s}
+.cur.dn svg{transform:scale(.82)}
+.ring{position:absolute;left:-10px;top:-10px;width:28px;height:28px;border-radius:50%;border:2px solid var(--g2);opacity:0}
+.cur.dn .ring{animation:rg .45s ease-out}
+@keyframes rg{from{opacity:.9;transform:scale(.4)}to{opacity:0;transform:scale(1.6)}}
+.cap{margin-top:16px;border:1px solid var(--bd);background:transparent;border-radius:14px;padding:16px 18px;display:flex;gap:14px;align-items:flex-start}
+.cap h2{margin:0 0 4px;font-size:17px}
+.cap p{margin:0;color:#c3ced9;font-size:16px;line-height:1.55;min-height:75px;transition:opacity .25s}
+.cap p.f{opacity:0}
+.cap>div:first-child{flex:1;min-width:0}
+.ctl{display:flex;gap:8px}
+.ic{width:38px;height:38px;border-radius:10px;border:1px solid var(--bd);background:var(--fld);color:var(--tx);cursor:pointer;font-size:14px}
+.ic:hover{border-color:var(--g2)}
+.ic:focus-visible,.chip:focus-visible{outline:2px solid var(--g2);outline-offset:2px}
+.prog{height:3px;background:var(--bd);border-radius:3px;margin-top:14px;overflow:hidden}
+.prog i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--g1),var(--g2));transition:width .4s}
+@media(max-width:560px){.body{padding:14px;min-height:620px}.tab{font-size:10.5px}.cap{flex-direction:column}}
 </style>
 </head>
 <body>
-<div class="demo-frame">
-  <div class="demo-topbar">
-    <span class="demo-badge">
-      <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-      Animated demo
-    </span>
-    <div class="demo-controls">
-      <button type="button" id="btnToggle" aria-label="Pause animation">Pause</button>
-      <button type="button" id="btnReplay" aria-label="Replay animation">Replay</button>
+<div class="wrap">
+  
+  <div class="stage" id="stage">
+    <div class="win">
+      
+      <div class="body">
+        <div class="tabs" id="tabs"></div>
+        <div id="panels"></div>
+      </div>
     </div>
+    <div class="cur" id="cur"><div class="ring"></div><svg width="24" height="24" viewBox="0 0 24 24"><path d="M3 2l16 9-7 2-3 7z" fill="#fff" stroke="#0a0f14" stroke-width="1.5" stroke-linejoin="round"/></svg></div>
   </div>
-  <div class="demo-steps" role="tablist" aria-label="Demo steps">
-    <button type="button" class="step-chip active" data-step="0" aria-label="Step 1: Generate Keys">1. Generate Keys</button>
-    <button type="button" class="step-chip" data-step="1" aria-label="Step 2: Encrypt">2. Encrypt</button>
-    <button type="button" class="step-chip" data-step="2" aria-label="Step 3: Decrypt">3. Decrypt</button>
-  </div>
-  <div class="demo-screen" aria-hidden="true">
-    <div id="demoField1" class="fake-field highlight"></div>
-    <div id="demoBtn" class="fake-btn"></div>
-    <div id="demoField2" class="fake-field"></div>
+  <div class="cap">
+    <div><h2 id="ct"></h2><p id="cd"></p><div class="prog"><i id="pg"></i></div></div>
+    <div class="ctl"><button class="ic" id="pp" aria-label="Pause">&#10074;&#10074;</button><button class="ic" id="rp" aria-label="Replay">&#8635;</button></div>
   </div>
 </div>
 <script>
-(function () {
-  const steps = [
-    { f1: 'Alice <alice@example.com> • Passphrase: ••••••••', btn: 'GENERATE NEW PGP KEYS PAIR', f2: '-----BEGIN PGP PUBLIC KEY BLOCK-----\nmQENBF... (2048-bit RSA generated locally)' },
-    { f1: 'Message: "Meet at 15:00" + Recipient Public Key', btn: 'ENCRYPT TEXT', f2: '-----BEGIN PGP MESSAGE-----\nhQEMA2... (Encrypted locally in browser)' },
-    { f1: 'Private Key + Passphrase + PGP Message', btn: 'DECRYPT TEXT', f2: 'Decrypted plaintext: "Meet at 15:00"' }
-  ];
-  let idx = 0, paused = false, timer = null;
-  const f1 = document.getElementById('demoField1');
-  const btn = document.getElementById('demoBtn');
-  const f2 = document.getElementById('demoField2');
-  const chips = document.querySelectorAll('.step-chip');
-  const toggleBtn = document.getElementById('btnToggle');
+const $=s=>document.querySelector(s), el=(k,i)=>document.getElementById(k+'-'+i);
+const PUB="-----BEGIN PGP PUBLIC KEY BLOCK-----\nVersion: OpenPGP.js v4.10.10\nComment: https://openpgpjs.org\n\nxsBNBGsDtBYBCAC9KoB3oGvmVg0ChuR98jixIR6wWtBdBHDCGTN9DxFORFJe\ntmeIVo8P8W7BeaE2dXQY9jH2BKkZGXaeAFQQzxGLsMPYj2a3DCvktLJHpATk\nLfOQ1x/0G22jizqCrBhn4EMpKo6KveEDH0iAfbk33ePsMVGPea0vsCGob4DN\n=JPHR\n-----END PGP PUBLIC KEY BLOCK-----";
+const PRIV="-----BEGIN PGP PRIVATE KEY BLOCK-----\nVersion: OpenPGP.js v4.10.10\nComment: https://openpgpjs.org\n\nxcMFBGsDtBYBCAC9KoB3oGvmVg0ChuR98jixIR6wWtBdBHDCGTN9DxFORFJe\ntmeIVo8P8W7BeaE2dXQY9jH2BKkZGXaeAFQQzxGLsMPYj2a3DCvktLJHpATk\nLfOQ1x/0G22jizqCrBhn4EMpKo6KveEDH0iAfbk33ePsMVGPea0vsCGob4DN\n=5Scn\n-----END PGP PRIVATE KEY BLOCK-----";
+const CT="-----BEGIN PGP MESSAGE-----\nVersion: OpenPGP.js v4.10.10\nComment: https://openpgpjs.org\n\nwcBMA3WD4dyTMaMVAQgAotNt3zIxFTtLJcn0MVMZhlfhh7jfAD171w+qqANH\nd6Z6DPmaky4rMafuDaCwV0h3a22lVJppR92VhmQSiu0mNxMzYkNtovPvEgWp\n=6Cqg\n-----END PGP MESSAGE-----";
+const SIG="-----BEGIN PGP SIGNED MESSAGE-----\nHash: SHA256\n\nhello, how are you?\n-----BEGIN PGP SIGNATURE-----\nVersion: OpenPGP.js v4.10.10\n\nwsBzBAEBCAAGBQJrA7ScACEJEJJGg82lBLAfFiEEFe2ZPeEV7YGw7O1zkkaD\nzaUEsB9OIgf/XjtBzVGMb5CMtlAQbrUh1fyQRYvT+ns8/9vzd9GBA8HOwmOe\n=aVEb\n-----END PGP SIGNATURE-----";
+const MSG="hello, this is my PGP message";
+// spec: i=input, p=password, t=textarea, b=button, r=result
+const P={
+gen:[['i','name','Enter your name here'],['i','email','Enter your email here'],['p','pass','Enter your passphrase here'],['b','go','Generate new PGP keys pair',1],['t','priv','Your private key will be displayed here'],['b','dl1','Download private key'],['t','pub','Your public key will be displayed here'],['b','dl2','Download public key']],
+enc:[['t','key',"Enter the recipient's public key here"],['b','imp','Import public key'],['t','msg','Enter the text to be encrypted here'],['b','go','Encrypt text',1],['t','out','Text encrypted will be displayed here']],
+dec:[['t','key','Enter the private key here'],['b','imp','Import private key'],['p','pass','Enter the passphrase here'],['t','msg','Enter the text to be decoded here'],['b','go','Decrypt text',1],['t','out','Decoded text will be displayed here']],
+sign:[['t','key','Enter the private key here'],['b','imp','Import private key'],['p','pass','Enter the passphrase here'],['t','msg','Enter the text to be signed here'],['b','go','Sign text',1],['t','out','Signed message will be displayed here']],
+ver:[['t','key','Enter the public key of the person who signed the message here'],['b','imp','Import public key'],['t','msg','Enter the signed message to be verified here'],['b','go','Verify text',1],['r','res','Verification result will be displayed here']]
+};
+const NAMES={gen:'Generate Keys',enc:'Encrypt',dec:'Decrypt',sign:'Sign',ver:'Verify'};
+const KEYS=Object.keys(P);
+let h='',th='',ch='';
+KEYS.forEach((k,n)=>{
+  th+=`<div class="tab" id="tab-${k}" data-n="${n}">${NAMES[k]}</div>`;
+  ch+=`<button class="chip" data-n="${n}">${NAMES[k]}</button>`;
+  h+=`<div class="panel" id="pn-${k}"><div class="ok" id="${k}-ok"></div>`+P[k].map(([t,id,x,pr])=>{
+    const i=`id="${k}-${id}"`;
+    if(t=='i')return `<input ${i} placeholder="${x}" tabindex="-1" readonly>`;
+    if(t=='p')return `<input ${i} type="password" placeholder="${x}" tabindex="-1" readonly>`;
+    if(t=='t')return `<textarea ${i} placeholder="${x}" tabindex="-1" readonly></textarea>`;
+    if(t=='b')return `<div class="btn${pr?' p':''}" ${i}>${x}</div>`;
+    return `<div class="res" ${i}>${x}</div>`;}).join('')+'</div>';
+});
+$('#tabs').innerHTML=th;$('#panels').innerHTML=h;
 
-  function render(i) {
-    idx = i;
-    f1.textContent = steps[i].f1;
-    btn.textContent = steps[i].btn;
-    f2.textContent = steps[i].f2;
-    chips.forEach((c, ci) => c.classList.toggle('active', ci === i));
-  }
+let G=0,paused=false,cur=-1,pos=null;
+const wait=async ms=>{const g=G;await new Promise(r=>setTimeout(r,ms));while(paused){await new Promise(r=>setTimeout(r,100));if(g!==G)throw 0}if(g!==G)throw 0};
+const cursor=$('#cur'),stage=$('#stage');
+let sn=0;
+const LONG={
+gen:["Enter your name.","Add your email.","Choose a passphrase. You'll need it to decrypt and sign.","Click Generate: keys are created locally in your browser.","Your private key stays secret. Share only the public key.","Download and back up your private key."],
+enc:["Paste the recipient's public key.","Click Import public key.","Write your message.","Click Encrypt text.","Only the recipient can read this PGP message."],
+dec:["Paste your private key.","Click Import private key.","Enter your passphrase.","Paste the PGP message you received.","Click Decrypt text.","The original message appears in clear text."],
+sign:["Paste your private key.","Click Import private key.","Enter your passphrase.","Type the message to sign.","Click Sign text.","Send it as is: anyone can verify it really comes from you."],
+ver:["Paste the signer's public key.","Click Import public key.","Paste the signed message.","Click Verify text.","Valid signature: the message is authentic and unaltered."]};
+const LONG_OLD={
+gen:["Step 1: your name. Type the name attached to your key pair. It tells people who receive your public key who it belongs to.","Step 2: your email. Add your email address. It is stored inside the key so others can recognize you.","Step 3: your passphrase. Choose a strong passphrase. It protects your private key, and you will need it every time you decrypt or sign a message. Do not lose it.","Click Generate new PGP keys pair. The 2048-bit RSA keys are created locally in your browser: nothing is sent to any server.","Your two keys appear. The private key is yours alone. The public key can be shared with anyone who wants to send you encrypted messages.","Download your private key and keep a backup in a safe place. Never share it. Only share your public key."],
+enc:["Paste the recipient's public key. This is the key of the person you want to write to. They send it to you first, and it is safe to share.","Click Import public key so the tool loads it and prepares the encryption.","Write the message you want to send. It can be any text: a password, an address or a private note.","Click Encrypt text. The message is encrypted right in your browser with the recipient's public key.","The result is a PGP message. You can send it by email or chat: only the recipient, with their private key and passphrase, can read it."],
+dec:["Paste your private key, the one generated in the first step. It is the only key able to open messages encrypted with your public key.","Click Import private key to load it into the tool.","Enter the passphrase you chose when you created your key pair. It unlocks your private key.","Paste the PGP message you received. It starts with BEGIN PGP MESSAGE.","Click Decrypt text. The tool uses your private key and passphrase to unlock the message.","Done. The original message appears in clear text, exactly as the sender wrote it."],
+sign:["Paste your private key. Signing proves a message comes from you, so it requires your private key.","Click Import private key to load it.","Enter your passphrase to authorize the signature.","Type the clear-text message you want to sign. Its content stays readable by everyone.","Click Sign text. A digital signature is created locally from your private key.","The signed message is ready. Send it as is: anyone with your public key can check it is really yours and was not modified, which prevents impersonation."],
+ver:["Paste the public key of the person who supposedly signed the message.","Click Import public key to load it.","Paste the signed message you received, including the BEGIN PGP SIGNATURE block.","Click Verify text. The tool checks the signature against the public key.","Valid signature: the message was written by this person and has not been altered. If anything was changed, the check fails."]};
+async function say(t){t=(LONG[KEYS[cur]]||[])[sn++]||t;const p=$('#cd');p.classList.add('f');await wait(200);p.textContent=t;p.classList.remove('f');await wait(Math.min(3200,Math.max(1500,t.length*35)))}
+async function mv(e,mode){
+  document.querySelectorAll('.hl').forEach(x=>x.classList.remove('hl'));
+  const s=stage.getBoundingClientRect(),r=e.getBoundingClientRect();
+  const big=r.height>50;
+  const x=(big?r.left+40:r.left+r.width/2)-s.left, y=(big?r.top+26:r.top+r.height/2)-s.top;
+  cursor.style.transform=`translate(${x}px,${y}px)`;
+  if(mode!=='btn')e.classList.add('hl');
+  await wait(900);
+}
+async function click(e){cursor.classList.add('dn');e.classList.add('press');await wait(200);cursor.classList.remove('dn');e.classList.remove('press');await wait(250)}
+async function type(k,id,t,sp=70){const e=el(k,id);await mv(e);for(let i=1;i<=t.length;i++){e.value=t.slice(0,i);await wait(sp)}await wait(300)}
+async function fill(k,id,t){const e=el(k,id);await mv(e);for(let i=0;i<t.length;i+=9){e.value=t.slice(0,i+9);await wait(16)}e.value=t;await wait(350)}
+async function out(k,id,t){const e=el(k,id);e.classList.add('hl');for(let i=0;i<t.length;i+=9){e.value=t.slice(0,i+9);await wait(14)}e.value=t;await wait(500);e.classList.remove('hl')}
+async function ok(k,t){const e=$('#'+k+'-ok');e.textContent=t;e.classList.add('on');await wait(800)}
+async function btn(k,id,label){const e=el(k,id);await mv(e,'btn');await click(e)}
 
-  function startLoop() {
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-    clearInterval(timer);
-    timer = setInterval(() => { if (!paused) render((idx + 1) % steps.length); }, 3000);
-  }
+const S={
+gen:{t:'Generate your keys',d:'Create a PGP key pair in seconds, entirely in your browser. All you need is three details.',run:async k=>{
+  await say('Enter your name.');await type(k,'name','bob');
+  await say('Add your email address.');await type(k,'email','bob@example.com',55);
+  await say('Choose a passphrase. You will need it later to decrypt and sign.');await type(k,'pass','MyS3cret!',90);
+  await say('Click Generate new PGP keys pair.');await btn(k,'go');
+  await ok(k,'2048-bit RSA key pair generated locally. Download and back up your private key.');
+  await say('Your private and public keys appear instantly.');await out(k,'priv',PRIV);await out(k,'pub',PUB);
+  await say('Download and back up your private key. Share only your public key.');await btn(k,'dl1');await wait(1400);}},
+enc:{t:'Encrypt a message',d:'Lock a message so that only the recipient can read it.',run:async k=>{
+  await say("Paste the recipient's public key.");await fill(k,'key',PUB);
+  await say('Click Import public key.');await btn(k,'imp');
+  await say('Write the message you want to send.');await type(k,'msg',MSG,50);
+  await say('Click Encrypt text.');await btn(k,'go');
+  await ok(k,'Message encrypted locally in your browser.');
+  await say('Done. Your message is now a PGP block that only the recipient can open with their private key.');await out(k,'out',CT);await wait(1800);}},
+dec:{t:'Decrypt a message',d:'Read a PGP message that was encrypted for you.',run:async k=>{
+  await say('Paste your private key.');await fill(k,'key',PRIV);
+  await say('Click Import private key.');await btn(k,'imp');
+  await say('Enter the passphrase you chose when you created your key pair.');await type(k,'pass','MyS3cret!',90);
+  await say('Paste the PGP message you received.');await fill(k,'msg',CT);
+  await say('Click Decrypt text.');await btn(k,'go');
+  await ok(k,'Message decrypted successfully.');
+  await say('The original message appears in clear text.');await out(k,'out',MSG);await wait(1800);}},
+sign:{t:'Sign a message',d:'Add your digital signature to a message so nobody can impersonate you.',run:async k=>{
+  await say('Paste your private key.');await fill(k,'key',PRIV);
+  await say('Click Import private key.');await btn(k,'imp');
+  await say('Enter your passphrase.');await type(k,'pass','MyS3cret!',90);
+  await say('Type the message you want to sign.');await type(k,'msg','hello, how are you?',60);
+  await say('Click Sign text.');await btn(k,'go');
+  await ok(k,'Message signed locally.');
+  await say('Send this signed message. Anyone with your public key can prove it came from you.');await out(k,'out',SIG);await wait(1800);}},
+ver:{t:'Verify a signature',d:'Check that a message really was written by the person who claims it.',run:async k=>{
+  await say('Paste the public key of the person who signed the message.');await fill(k,'key',PUB);
+  await say('Click Import public key.');await btn(k,'imp');
+  await say('Paste the signed message you received.');await fill(k,'msg',SIG);
+  await say('Click Verify text.');await btn(k,'go');
+  await ok(k,'Signature verified.');
+  const r=el(k,'res');r.textContent='Signed by bob <bob@example.com>\nSignature is valid.';r.classList.add('good');
+  await say('Valid signature: the message comes from that person and was not altered.');await wait(2200);}}
+};
 
-  chips.forEach(c => c.addEventListener('click', () => render(parseInt(c.dataset.step, 10))));
-  toggleBtn.addEventListener('click', () => {
-    paused = !paused;
-    toggleBtn.textContent = paused ? 'Play' : 'Pause';
-    toggleBtn.setAttribute('aria-label', paused ? 'Play animation' : 'Pause animation');
-  });
-  document.getElementById('btnReplay').addEventListener('click', () => { paused = false; toggleBtn.textContent = 'Pause'; render(0); });
-
-  render(0);
-  if ('IntersectionObserver' in window) {
-    const obs = new IntersectionObserver(entries => {
-      if (entries[0].isIntersecting) { startLoop(); obs.disconnect(); }
-    });
-    obs.observe(document.querySelector('.demo-frame'));
-  } else {
-    startLoop();
-  }
-})();
+function reset(){
+  document.querySelectorAll('input,textarea').forEach(e=>e.value='');
+  document.querySelectorAll('.ok').forEach(e=>{e.classList.remove('on');e.textContent=''});
+  document.querySelectorAll('.hl').forEach(e=>e.classList.remove('hl'));
+  const r=el('ver','res');r.textContent=P.ver[4][2];r.classList.remove('good');
+}
+async function play(n){
+  const g=++G;cur=n;const k=KEYS[n];
+  document.querySelectorAll('.chip').forEach((c,i)=>c.classList.toggle('on',i==n));
+  $('#pg').style.width=((n+1)/KEYS.length*100)+'%';
+  $('#ct').textContent=S[k].t;$('#cd').textContent=S[k].d;
+  reset();sn=0;
+  try{
+    await wait(500);
+    const t=$('#tab-'+k);
+    await mv(t,'btn');await click(t);
+    document.querySelectorAll('.tab').forEach(x=>x.classList.remove('on'));t.classList.add('on');
+    document.querySelectorAll('.panel').forEach(x=>x.classList.remove('on'));$('#pn-'+k).classList.add('on');
+    await wait(400);
+    await S[k].run(k);
+    await wait(1500);
+    play((n+1)%KEYS.length);
+  }catch(e){if(e!==0)console.error(e)}
+}
+$('#tabs').onclick=e=>{const c=e.target.closest('.tab');if(c)play(+c.dataset.n)};
+$('#rp').onclick=()=>play(cur);
+$('#pp').onclick=()=>{paused=!paused;$('#pp').innerHTML=paused?'&#9654;':'&#10074;&#10074;';$('#pp').setAttribute('aria-label',paused?'Play':'Pause')};
+cursor.style.transform='translate(60px,30px)';
+play(0);
 </script>
 </body>
 </html>
