@@ -116,7 +116,7 @@ KEYS.forEach((k,n)=>{
 $('#tabs').innerHTML=th;$('#panels').innerHTML=h;
 
 let G=0,paused=false,cur=-1,pos=null;
-const wait=async ms=>{const g=G;await new Promise(r=>setTimeout(r,ms));while(paused){await new Promise(r=>setTimeout(r,100));if(g!==G)throw 0}if(g!==G)throw 0};
+const wait=async ms=>{const g=G;await new Promise(r=>setTimeout(r,ms/2));while(paused){await new Promise(r=>setTimeout(r,100));if(g!==G)throw 0}if(g!==G)throw 0};
 const cursor=$('#cur'),stage=$('#stage');
 let sn=0;
 const LONG={
